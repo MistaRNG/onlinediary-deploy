@@ -69,5 +69,5 @@ Tagebucheinträgen zu erkennen.
 *Technologien:* Typescript, React, NodeJS, MySQL, OAuth 2.0 
 
 
-*Architektur Skizze**:*
-![Architektur_Skizze](Architektur_Skizze.png)
+.Architektur Skizze
+image::Architektur_Skizze.png[Architektur_Skizze, align="center", width=100%]
