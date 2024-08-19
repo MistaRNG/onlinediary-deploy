@@ -1,5 +1,7 @@
 = Entwicklungsplan für ONLINEDIARY
-----
+
+{empty} +
+
 == Bereits umgesetzte Funktionalitäten
 
 {empty} +
@@ -36,11 +38,7 @@
 
 {empty} +
 
-=== Kalender-Funktionalität
-
-{empty} +
-
-==== Heute-Button für Kalender
+=== Heute-Button für Kalender
 * Ziel: Ermöglicht den Benutzern, schnell zum aktuellen Datum im Kalender zu navigieren.
 * Zeitplan: Bis 26.08. umgesetzt.
 
@@ -48,11 +46,7 @@
 {empty} +
 {empty} +
 
-=== Erweiterung der Tagebucheinträge
-
-{empty} +
-
-==== Löschen-Button für Tagebucheinträge
+=== Löschen-Button für Tagebucheinträge
 * Ziel: Benutzer können ihre eigenen Tagebucheinträge einfach löschen.
 * Zeitplan: Bis 26.08. umgesetzt.
 
@@ -60,11 +54,7 @@
 {empty} +
 {empty} +
 
-=== Interaktionsmöglichkeiten zwischen Benutzern
-
-{empty} +
-
-==== Likes und Kommentarfunktion für andere Nutzer
+=== Likes und Kommentarfunktion für andere Nutzer
 * Ziel: Benutzer können die Tagebucheinträge anderer Nutzer liken und kommentieren, um soziale Interaktionen zu ermöglichen.
 * Zeitplan: Bis 02.09. umgesetzt.
 
@@ -72,11 +62,7 @@
 {empty} +
 {empty} +
 
-=== API-Schnittstelle
-
-{empty} +
-
-==== Dokumentation und Erweiterung der API
+=== Dokumentation und Erweiterung der API
 * Ziel: Erweiterung und Dokumentation der API-Schnittstellen, um eine nahtlose Kommunikation zwischen Frontend und Backend zu gewährleisten. Überprüfe die Möglichkeit, externe Integrationen zu unterstützen.
 * Zeitplan: Bis 06.09. umgesetzt.
 
@@ -84,22 +70,14 @@
 {empty} +
 {empty} +
 
-=== Testing und Qualitätssicherung
-
-{empty} +
-
-==== Snapshot- und Unit-Tests
+=== Snapshot- und Unit-Tests
 * Ziel: Einführung von Unit- und Integrationstests für kritische Komponenten, um die Stabilität der Anwendung zu gewährleisten.
 * Zeitplan: Bis 06.09. umgesetzt.
 
 {empty} +  
 {empty} +
 {empty} +
-
-=== Deployment-Strategie
-
-{empty} +
  
-==== Docker-Integration
+=== Docker-Integration
 * Ziel: Containerisierung der Anwendung mit Docker, um eine einfache Bereitstellung und Skalierbarkeit zu ermöglichen. Erstellung von Dockerfiles für Backend, Frontend und Datenbank.
 * Zeitplan: Umsetzung geplant bis zum Ende des Projekts.
