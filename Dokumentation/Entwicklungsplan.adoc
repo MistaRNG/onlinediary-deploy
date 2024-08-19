@@ -1,5 +1,6 @@
 # Entwicklungsplan für ONLINEDIARY
 
+
 ## Bereits umgesetzte Funktionalitäten
 
 ### Backend-Implementierung
@@ -8,14 +9,21 @@
 * Benutzerregistrierung, Login und Logout.
 * Grundlegende CRUD-Operationen für Tagebucheinträge.
 
+
+
 ### Frontend-Implementierung
 * Entwicklung eines Frontend-Clients mit Benutzer-Authentifizierung, Erstellung und Verwaltung von Tagebucheinträgen.
 * Implementierung von grundlegenden UI-Komponenten wie Formulare und Listenansichten.
 * Integration von State Management der Benutzer- und Tagebuchdaten.
 
+
+
 ### Umgebungseinrichtung
 * Einrichtung und Konfiguration der Entwicklungsumgebung mit den erforderlichen Tools und Abhängigkeiten.
 * Konfiguration von Umgebungsvariablen und Sicherheitseinstellungen.
+
+
+
 
 ## Zukünftige Meilensteine und Aufgaben
 
@@ -25,11 +33,15 @@
 * Ziel: Ermöglicht den Benutzern, schnell zum aktuellen Datum im Kalender zu navigieren.
 * Zeitplan: Bis 26.08. umgesetzt.
 
+
+
 ### Erweiterung der Tagebucheinträge
 
 #### Löschen-Button für Tagebucheinträge
 * Ziel: Benutzer können ihre eigenen Tagebucheinträge einfach löschen.
 * Zeitplan: Bis 26.08. umgesetzt.
+
+
 
 ### Interaktionsmöglichkeiten zwischen Benutzern
 
@@ -37,17 +49,23 @@
 * Ziel: Benutzer können die Tagebucheinträge anderer Nutzer liken und kommentieren, um soziale Interaktionen zu ermöglichen.
 * Zeitplan: Bis 02.09. umgesetzt.
 
+
+
 ### API-Schnittstelle
 
 #### Dokumentation und Erweiterung der API
 * Ziel: Erweiterung und Dokumentation der API-Schnittstellen, um eine nahtlose Kommunikation zwischen Frontend und Backend zu gewährleisten. Überprüfe die Möglichkeit, externe Integrationen zu unterstützen.
 * Zeitplan: Bis 06.09. umgesetzt.
 
+
+
 ### Testing und Qualitätssicherung
 
 #### Snapshot- und Unit-Tests
 * Ziel: Einführung von Unit- und Integrationstests für kritische Komponenten, um die Stabilität der Anwendung zu gewährleisten.
 * Zeitplan: Bis 06.09. umgesetzt.
+
+
 
 ### Deployment-Strategie
 
