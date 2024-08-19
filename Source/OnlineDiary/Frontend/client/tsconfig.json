@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "baseUrl": "src",
+      "module": "commonjs",
+      "target": "es6",
+      "lib": ["es6", "dom"],
+      "sourceMap": true,
+      "jsx": "react-jsx",
+      "outDir": "dist",
+      "esModuleInterop": true,
+      "allowJs": true,
+      "checkJs": false
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "src/**/*.test.ts", "jest.config.ts", "src/Tests/**", "build"]
+  }
