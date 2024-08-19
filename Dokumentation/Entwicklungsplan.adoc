@@ -1,7 +1,9 @@
 = Entwicklungsplan für ONLINEDIARY
 ----
 == Bereits umgesetzte Funktionalitäten
+
 {empty} +
+
 === Backend-Implementierung
 * Implementierung des Servers für die Benutzerverwaltung, Tagebucheinträge, Kommentare und Likes.
 * Integration einer SQL-Datenbank zur Speicherung von Benutzerdaten und Tagebucheinträgen.
