@@ -1,5 +1,5 @@
 = Entwicklungsplan für ONLINEDIARY
-{empty} +
+----
 == Bereits umgesetzte Funktionalitäten
 {empty} +
 === Backend-Implementierung
