@@ -1,10 +1,6 @@
 *Onlinediary (Online-Tagebuch)*
 
- 
-
 *1. Frontend-Entwicklung*
-
- 
 
 - Benutzeroberfläche: Das Design und die Entwicklung einer intuitiven
 und benutzerfreundlichen Oberfläche, die es Benutzern ermöglicht,
@@ -21,11 +17,7 @@ direkt mit den Einträgen zu interagieren.
 
  
 
- 
-
 * 2. Backend-Struktur*
-
- 
 
 - CRUD-Operationen: Entwicklung einer API, die das Erstellen, Lesen,
 Aktualisieren und Löschen von Tagebucheinträgen sowie das Hinzufügen und
@@ -40,11 +32,7 @@ Löschen von Kommentaren.
 
  
 
- 
-
 * 3. Datenhaltung*
-
- 
 
 - Datenbankdesign: Entwurf einer Datenbankstruktur, die die
 Tagebucheinträge, Benutzerinformationen, Likes, Kommentare und
@@ -52,8 +40,6 @@ möglicherweise auch Stimmungsdaten effizient speichert. +
 - Datensicherheit: Gewährleistung der Sicherheit der Daten durch
 Verschlüsselung, sowohl bei der Speicherung als auch bei der Übertragung
 (OAuth 2.0) .
-
- 
 
  
 
@@ -82,7 +68,6 @@ Tagebucheinträgen zu erkennen.
 
 *Technologien:* Typescript, React, NodeJS, MySQL, OAuth 2.0 
 
- +
- +
-*Architektur Skizze**:* +
-image::architektur.png[Architektur_Skizze, width=100%, align=center]
+
+*Architektur Skizze**:*
+image::Architektur_Skizze.png[Architektur_Skizze, width=100%, align=center]
