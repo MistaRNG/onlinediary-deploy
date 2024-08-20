@@ -29,6 +29,10 @@ const Calendar: React.FC<CalendarProps> = ({ value, disabledDays, minDate, dates
     }
   };
 
+  const handleTodayClick = (): void => {
+    navigate(`/journal/${today}`);
+  };
+
   const getDayClassName = (date: Date): string => {
     const formattedDate: string = formatDate(date);
     let className: string = "";
@@ -43,6 +47,9 @@ const Calendar: React.FC<CalendarProps> = ({ value, disabledDays, minDate, dates
 
   return (
     <div className="calendar-container">
+      <div className="calendar-header">
+        <button onClick={handleTodayClick} className="today-button">Today</button>
+      </div>
       <DatePicker
         selected={value}
         onChange={changeHandler}
@@ -57,4 +64,3 @@ const Calendar: React.FC<CalendarProps> = ({ value, disabledDays, minDate, dates
 };
 
 export default Calendar;
-
