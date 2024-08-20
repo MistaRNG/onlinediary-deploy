@@ -38,7 +38,7 @@
 
 {empty} +
 
-=== Heute-Button für Kalender [x]
+=== Heute-Button für Kalender * [x]
 * Ziel: Ermöglicht den Benutzern, schnell zum aktuellen Datum im Kalender zu navigieren.
 * Zeitplan: Bis 26.08. umgesetzt. (*erledigt am 20.08.2024*)
 
@@ -46,7 +46,7 @@
 {empty} +
 {empty} +
 
-=== Löschen-Button für Tagebucheinträge [x]
+=== Löschen-Button für Tagebucheinträge * [x]
 * Ziel: Benutzer können ihre eigenen Tagebucheinträge einfach löschen.
 * Zeitplan: Bis 26.08. umgesetzt. (*erledigt am 20.08.2024*)
 
