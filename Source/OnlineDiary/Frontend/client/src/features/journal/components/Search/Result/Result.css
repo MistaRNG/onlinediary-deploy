@@ -10,3 +10,24 @@
   margin: 1em 0.2em;
   max-width: 100%;
 }
+
+.result-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.result-content {
+  flex: 1;
+}
+
+.delete-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
