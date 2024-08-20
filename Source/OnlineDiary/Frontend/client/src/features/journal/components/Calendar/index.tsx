@@ -1,3 +1,4 @@
+import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Calendar.css";
 import DatePicker from "react-datepicker";
@@ -41,6 +42,9 @@ const Calendar: React.FC<CalendarProps> = ({ value, disabledDays, minDate, dates
     }
     if (formattedDate === today) {
       className += " react-datepicker__day--today";
+    }
+    if (value && formatDate(value) === formattedDate) {
+      className += " react-datepicker__day--selected-date";
     }
     return className;
   };
