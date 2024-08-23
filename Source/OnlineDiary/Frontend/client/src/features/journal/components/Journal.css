@@ -36,3 +36,9 @@
     align-items: flex-start;
   }
 }
+
+.journal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -23,10 +23,10 @@ const JournalEditor: React.FC<JournalEditorProps> = ({ date }) => {
     titleKeyDownHandler,
     titleKeyUpHandler,
     saved,
+    isPublic,
+    toggleIsPublic,
   } = useEditor(formattedDate);
   
-  
-
   return (
     <div className="Editor">
       <Main
@@ -39,6 +39,8 @@ const JournalEditor: React.FC<JournalEditorProps> = ({ date }) => {
           titleRef,
           titleKeyDownHandler,
           titleKeyUpHandler,
+          isPublic,
+          toggleIsPublic,
         }}
       />
       <Toolbar {...{ saved, mouseDownHandler, styles, lists, wordCount }} />

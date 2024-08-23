@@ -4,6 +4,7 @@ interface JournalEntry {
   date: string;
   title: string;
   content: any;
+  is_public: boolean;
 }
 
 interface DB {
@@ -31,14 +32,33 @@ const queryGenerator = (db: DB) => {
     }
   };
 
+  const getPublicJournals = async (): Promise<JournalEntry[]> => {
+    const queryString = `
+      SELECT * FROM journals
+      WHERE is_public = true
+      ORDER BY date DESC;`;
+
+    try {
+      const { rows } = await db.query(queryString);
+      for (const row of rows) {
+        const { content } = row;
+        row.content = JSON.parse(content);
+      }
+      return rows as JournalEntry[];
+    } catch (e) {
+      throw e;
+    }
+  };
+
   const postJournal = async (
     content: any,
     id: number,
     date: string,
-    title: string
+    title: string,
+    is_public: boolean
   ): Promise<JournalEntry> => {
     const values1 = [id, date];
-    const values2 = [JSON.stringify(content), id, date, title];
+    const values2 = [JSON.stringify(content), id, date, title, is_public];
     const querySelectString = `
       SELECT * FROM journals
       WHERE user_id = $1 AND date = $2;`;
@@ -46,13 +66,14 @@ const queryGenerator = (db: DB) => {
     const queryUpdateString = `
       UPDATE journals
       SET content = $1,
-      title = $4
+      title = $4,
+      is_public = $5
       WHERE user_id = $2 AND date = $3
       RETURNING *;`;
 
     const queryInsertString = `
-      INSERT INTO journals (content, user_id, date, title)
-      VALUES ($1, $2, $3, $4)
+      INSERT INTO journals (content, user_id, date, title, is_public)
+      VALUES ($1, $2, $3, $4, $5)
       RETURNING *;`;
 
     const queryDeleteString = `
@@ -92,7 +113,7 @@ const queryGenerator = (db: DB) => {
     }
   };
 
-  return { postJournal, getJournals, deleteJournal };
+  return { postJournal, getJournals, getPublicJournals, deleteJournal };
 };
 
 export default queryGenerator;

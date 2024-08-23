@@ -3,10 +3,10 @@ import queryGenerator from "../database/helpers/journals";
 
 export default (db: any) => {
   const router = Router();
-  const { postJournal, getJournals, deleteJournal } = queryGenerator(db);
+  const { postJournal, getJournals, deleteJournal, getPublicJournals } = queryGenerator(db);
 
   router.post("/", async (req: any, res: Response, next: NextFunction) => {
-    const { content, date, title } = req.body;
+    const { content, date, title, is_public } = req.body;
     const userId = req.session.user_id;
 
     if (userId === undefined) {
@@ -14,7 +14,7 @@ export default (db: any) => {
     }
 
     try {
-      await postJournal(content, userId, date, title);
+      await postJournal(content, userId, date, title, is_public);
       res.status(200).json();
     } catch (error) {
       next(error);
@@ -31,6 +31,15 @@ export default (db: any) => {
     try {
       const info = await getJournals(userId);
       res.json(info);
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  router.get("/public", async (req: any, res: Response, next: NextFunction) => {
+    try {
+      const publicJournals = await getPublicJournals();
+      res.json(publicJournals);
     } catch (error) {
       next(error);
     }

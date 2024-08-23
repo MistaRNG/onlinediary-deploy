@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import LogIn from "features/auth/LogIn";
 import Register from "features/auth/Register";
 import Journal from "features/journal/components";
+import PublicJournals from "../features/journal/PublicJournals";
 import Redirect from "features/redirect/Redirect";
 import Loading from "features/loading/Loading";
 import useCurrentUser from "common/hooks/useCurrentUser";
@@ -38,6 +39,7 @@ const App: React.FC = () => {
           <>
             <Routes>
               <Route path="/journal/:date" element={<Journal />} />
+              <Route path="/public-journals" element={<PublicJournals />} /> {}
               <Route path="*" element={<Redirect />} />
             </Routes>
             {locked && <Safety />}

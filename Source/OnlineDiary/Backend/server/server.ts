@@ -23,10 +23,14 @@ app.use(express.urlencoded({ extended: true }));
 import usersRoutes from "./routes/users";
 import journalsRoutes from "./routes/journals";
 import modeRoutes from "./routes/mode";
+import commentsRoutes from "./routes/comments";
+import likesRoutes from "./routes/likes";
 
 app.use("/api/users", usersRoutes(db as any));
 app.use("/api/journals", journalsRoutes(db as any));
 app.use("/api/mode", modeRoutes());
+app.use("/api/comments", commentsRoutes(db as any));
+app.use("/api/likes", likesRoutes(db as any));
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err);

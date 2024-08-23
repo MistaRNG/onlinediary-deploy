@@ -1,6 +1,7 @@
 import { Editor, EditorState } from "draft-js";
 import Title from "./Title";
 import DateComponent from "./Date";
+import { Switch } from "@blueprintjs/core";
 
 interface MainProps {
   onChange: (editorState: EditorState) => void;
@@ -11,6 +12,8 @@ interface MainProps {
   titleRef: React.RefObject<HTMLTextAreaElement>;
   titleKeyDownHandler: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void;
   titleKeyUpHandler: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void;
+  isPublic: boolean;
+  toggleIsPublic: () => void;
 }
 
 const Main: React.FC<MainProps> = ({
@@ -22,12 +25,19 @@ const Main: React.FC<MainProps> = ({
   titleRef,
   titleKeyDownHandler,
   titleKeyUpHandler,
+  isPublic,
+  toggleIsPublic,
 }) => {
   const parsedDate = typeof date === 'string' ? new Date(date) : date;
 
   return (
     <div>
-      {}
+      <Switch
+        checked={isPublic}
+        label="Public"
+        onChange={toggleIsPublic}
+        style={{ marginBottom: "1em" }}
+      />
       <DateComponent date={parsedDate} />
       <Title
         {...{

@@ -24,6 +24,23 @@ const lists: ListStyle[] = [
 ];
 
 const useEditor = (date: string) => {
+  const [isPublic, setIsPublic] = useState<boolean>(false);
+  const toggleIsPublic = () => {
+    const newIsPublic = !isPublic;
+    setIsPublic(newIsPublic);
+  
+    const content = editorState.getCurrentContent();
+    const isEmpty = !content.hasText();
+    const title = titleRef.current?.value || "";
+  
+    if (!isEmpty || title) {
+      const rawContent = convertToRaw(content);
+      dispatch(
+        saveJournal(rawContent, date, title, newIsPublic)
+      );
+    }
+  };
+
   const { data, saved } = useSelector((state: RootState) => ({
     data: state.journals.data,
     saved: state.journals.saved,
@@ -70,10 +87,12 @@ const useEditor = (date: string) => {
       setEditorState(state);
       updateWordCount(state);
       updateTitle(data[date].title);
+      setIsPublic(data[date].isPublic || false);
     } else {
       setEditorState(EditorState.createEmpty());
       updateWordCount();
       updateTitle("");
+      setIsPublic(false);
     }
   }, [date]);
 
@@ -93,7 +112,7 @@ const useEditor = (date: string) => {
     } else {
       const rawContent = convertToRaw(content);
       dispatch(
-        saveJournal(rawContent, date, title)
+        saveJournal(rawContent, date, title, isPublic)
       );
     }
     setEditorState(state);
@@ -123,7 +142,7 @@ const useEditor = (date: string) => {
       const t = setTimeout(() => dispatch(clearStatus), showSavedTimeout);
       return () => clearTimeout(t);
     }
-  }, [saved]);  
+  }, [saved]);
 
   return {
     focusEditor,
@@ -138,6 +157,8 @@ const useEditor = (date: string) => {
     titleKeyDownHandler,
     titleKeyUpHandler,
     saved,
+    isPublic,          
+    toggleIsPublic,    
   };
 };
 
