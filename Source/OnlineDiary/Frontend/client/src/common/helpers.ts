@@ -66,6 +66,7 @@ export const getNextDay = (date: string | Date): string => {
 };
 
 export interface JournalData {
+  id: number;
   content: any;
   title: string;
   text: string;
@@ -73,16 +74,16 @@ export interface JournalData {
 }
 
 export const formatJournals = (
-  data: { date: string; content: RawDraftContentState; title: string; is_public?: boolean }[]
+  data: { id: number; date: string; content: RawDraftContentState; title: string; is_public?: boolean }[]
 ): [Record<string, JournalData>, string[]] => {
   const result: Record<string, JournalData> = {};
   const dates: string[] = [];
   for (const row of data) {
-    const { date, content, title, is_public } = row;
+    const { id, date, content, title, is_public } = row;
     const text = getText(content);
     const formattedDate = formatDate(date);
     const isPublic = is_public || false;
-    result[formattedDate] = { title, content, text, isPublic };
+    result[formattedDate] = { id, title, content, text, isPublic };
     dates.push(formattedDate);
   }
   return [result, dates];

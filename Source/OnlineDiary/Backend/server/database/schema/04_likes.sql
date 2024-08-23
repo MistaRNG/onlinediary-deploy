@@ -4,5 +4,6 @@ CREATE TABLE likes (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   journal_id INTEGER REFERENCES journals(id) ON DELETE CASCADE,
-  created_at TIMESTAMP DEFAULT NOW()
+  created_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE(user_id, journal_id)
 );

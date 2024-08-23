@@ -6,6 +6,7 @@ import { AnyAction } from "redux";
 import { RootState } from "../../app/store";
 
 interface JournalData {
+  id: number;
   content: any;
   title: string;
   text: string;
