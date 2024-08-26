@@ -19,7 +19,6 @@ const Content: React.FC<ContentProps> = ({ disabledDays, minDate, value, date, d
         <Search />
         <Calendar {...{ disabledDays, minDate, value, dates: parsedDates }} />
       </div>
-      {}
       <Editor date={date} />
     </div>
   );

@@ -2,7 +2,7 @@
   position: absolute;
   top: 1em;
   left: 1em;
-  z-index: 2;
+  z-index: 2000;
 }
 
 .DarkModeButton span[icon="moon"] svg {

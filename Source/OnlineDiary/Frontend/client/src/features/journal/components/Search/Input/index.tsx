@@ -16,6 +16,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ search, changeHandler, cancel
       value={search}
       onChange={changeHandler}
       rightElement={<CancelButton search={!!search} cancel={cancel} />}
+      className="search-input"
     />
   );
 };

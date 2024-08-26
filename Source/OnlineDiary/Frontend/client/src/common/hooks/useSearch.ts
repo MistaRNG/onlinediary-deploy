@@ -11,24 +11,34 @@ const useSearch = () => {
 
   const updateResults = () => {
     const newResults = [];
-
+  
     const searchLower = search.toLowerCase();
     for (const date in data) {
       const { title, text } = data[date];
-
+  
+      const formattedDate = new Date(date).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }).toLowerCase();
+  
       if (searchLower) {
         const foundInTitle = title && title.toLowerCase().includes(searchLower);
         const foundInContent = text && text.toLowerCase().includes(searchLower);
-        if (foundInTitle || foundInContent) newResults.push({ id: date, date, title });
+        const foundInDate = formattedDate.includes(searchLower);
+  
+        if (foundInTitle || foundInContent || foundInDate) {
+          newResults.push({ id: date, date, title });
+        }
       } else {
         newResults.push({ id: date, date, title });
       }
     }
-
+  
     const sorted = newResults.sort(({ date }, { date: date2 }) => {
       return compareDate(date, date2) ? 1 : -1;
     });
-
+  
     setResults(sorted);
   };
 

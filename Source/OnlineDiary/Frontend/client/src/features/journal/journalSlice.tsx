@@ -5,6 +5,15 @@ import { ThunkAction } from "redux-thunk";
 import { AnyAction } from "redux";
 import { RootState } from "../../app/store";
 
+interface JournalDataForDashboard {
+  id: number;
+  content: any;
+  title: string;
+  text: string;
+  isPublic: boolean;
+  date: string;
+}
+
 interface JournalData {
   id: number;
   content: any;
@@ -22,6 +31,22 @@ interface JournalState {
 }
 
 const initState: JournalState = {
+  data: {},
+  gotData: false,
+  saved: null,
+  editCount: 0,
+  prevDates: [],
+};
+
+interface JournalStateForDashboard {
+  data: Record<string, JournalDataForDashboard>;
+  gotData: boolean;
+  saved: boolean | null;
+  editCount: number;
+  prevDates: string[];
+}
+
+const initStateForDashboard: JournalStateForDashboard = {
   data: {},
   gotData: false,
   saved: null,
@@ -152,8 +177,12 @@ const reducer = (state = initState, action: AnyAction): JournalState => {
       const {
         payload: { data: receivedData },
       } = action;
-      const [formattedData, prevDates] = formatJournals(receivedData);
-      return { ...state, prevDates, data: formattedData, gotData: true };
+      const formattedData = receivedData.reduce((acc, journal) => {
+        const { id, content, title, is_public: isPublic, date } = journal;
+        acc[id] = { id, content, title, text: getText(content), isPublic, date };
+        return acc;
+      }, {} as Record<string, JournalDataForDashboard>);
+      return { ...state, data: formattedData, gotData: true };
     }
     default:
       return state;

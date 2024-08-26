@@ -65,6 +65,30 @@ export default (db: any) => {
     }
   });
 
+  router.get("/users/:journal_id", async (req: any, res: Response, next: NextFunction) => {
+    const { journal_id } = req.params;
+    const userId = req.session.user_id;
+  
+    if (!userId) {
+      return res.status(401).json({ error: "User not authenticated" });
+    }
+  
+    try {
+      const query = `
+        SELECT users.username 
+        FROM likes
+        JOIN users ON likes.user_id = users.id
+        WHERE journal_id = $1;
+      `;
+      const values = [journal_id];
+      const { rows } = await db.query(query, values);
+  
+      res.status(200).json(rows.map((row: { username: string }) => row.username));
+    } catch (error) {
+      next(error);
+    }
+  });
+
   router.post("/", async (req: any, res: Response, next: NextFunction) => {
     const { journal_id } = req.body;
     const userId = req.session.user_id;

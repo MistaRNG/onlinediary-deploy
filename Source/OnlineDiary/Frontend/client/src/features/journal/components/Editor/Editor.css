@@ -93,6 +93,23 @@ textarea {
   align-items: center;
 }
 
+.close-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 1.1em;
+  color: #fff;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.dark .close-button {
+  background-color: #555555;
+}
+
+.dark .close-button:hover {
+  background-color: #333;
+}
+
 @media (min-width: 420px) {
   .Editor {
     width: auto;
