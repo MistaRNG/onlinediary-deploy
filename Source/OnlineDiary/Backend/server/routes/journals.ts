@@ -34,8 +34,7 @@ export default (db: any) => {
       const { rows } = await db.query(query, values);
 
       if (rows.length === 0) {
-        console.warn("No journal found for the date:", date);
-        return res.status(404).json({ error: "Journal not found" });
+        return res.status(204).json({});
       }
 
       res.status(200).json({ journalId: rows[0].id });

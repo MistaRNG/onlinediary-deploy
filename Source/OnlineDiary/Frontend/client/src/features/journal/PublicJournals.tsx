@@ -10,6 +10,7 @@ import moment from "moment";
 import useMode from "common/hooks/useMode";
 import { useNavigate } from "react-router-dom";
 import SearchInput from "./components/Search/Input";
+import LogoutButton from "features/auth/LogoutButton";
 
 const PublicJournals: React.FC = () => {
   const { darkMode } = useMode();
@@ -153,23 +154,29 @@ const PublicJournals: React.FC = () => {
 
   return (
     <div className={darkMode ? "dark" : "bright"}>
+      <LogoutButton />
       <div className="page-container">
         {!isPasswordInputVisible && (
           <>
             <div
               className="header-container"
               style={{
-                marginTop: "20px",
-                zIndex: 1,
-                position: "relative",
+                position: "fixed",
+                filter: isModalOpen ? "brightness(0.5)" : "none",
+                margin: "70px 0 0 1px",
+                zIndex: 1000,
+                display: "block",
               }}
             >
-              <h2 style={{ textAlign: "center" }}>Public entries</h2>
               <Button
                 icon="arrow-left"
                 text="Back to Editor"
                 onClick={() => navigate(`/journal/${moment().format("YYYY-MM-DD")}`)}
                 className="back-to-editor-button"
+                style={{
+                  marginBottom: "30px",
+                  display: "block",
+                }}
               />
               <SearchInput
                 search={searchQuery}
@@ -177,14 +184,29 @@ const PublicJournals: React.FC = () => {
                 cancel={cancelSearch}
               />
             </div>
+            <h2
+              style={{
+                textAlign: "center",
+                width: "100%",
+                marginTop: "20px",
+                position: "fixed",
+                top: "30px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                zIndex: 999,
+              }}
+            >
+              Public entries
+            </h2>
           </>
         )}
         <div
           className="content-container"
-          style={{ 
-            filter: isModalOpen ? "brightness(0.5)" : "none", 
-            marginTop: "0px",
+          style={{
+            filter: isModalOpen ? "brightness(0.5)" : "none",
+            marginTop: "100px",
             zIndex: 0,
+            position: "relative",
           }}
         >
           <div className="public-journals-container">

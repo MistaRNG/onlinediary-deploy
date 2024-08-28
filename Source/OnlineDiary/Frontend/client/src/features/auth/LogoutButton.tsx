@@ -4,12 +4,13 @@ import { logout } from "./authSlice";
 import { useDispatch } from "react-redux";
 import useCurrentUser from "common/hooks/useCurrentUser";
 import { AppDispatch } from "../../app/store";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const LogoutButton: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { username } = useCurrentUser();
 
   const [isPasswordInputVisible, setIsPasswordInputVisible] = useState(false);
@@ -36,7 +37,7 @@ const LogoutButton: React.FC = () => {
 
   return (
     <div className="Logout-Button">
-      {!isPasswordInputVisible && (
+      {!isPasswordInputVisible && location.pathname !== "/public-journals" && (
         <Button onClick={goToPublicJournals} icon="people">
           Entries from others
         </Button>
