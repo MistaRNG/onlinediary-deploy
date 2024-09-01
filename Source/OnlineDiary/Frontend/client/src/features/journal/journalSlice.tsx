@@ -71,7 +71,7 @@ type AppThunk = ThunkAction<void, RootState, unknown, AnyAction>;
 export const getPublicJournals = (): AppThunk => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get("/api/journals/public");
+      const { data } = await axios.get("http://localhost:3005/api/journals/public", { withCredentials: true });
       dispatch({ type: GET_PUBLIC_JOURNALS, payload: { data } });
     } catch (e: any) {
       dispatch(displayError(e.response?.data || "Error fetching public journals"));
@@ -96,7 +96,7 @@ export const saveJournal = (
           journals: { editCount: newCount },
         } = getState();
         if (oldCount === newCount) {
-          await axios.post("/api/journals", { content, date, title, is_public: isPublic });
+          await axios.post("http://localhost:3005/api/journals", { content, date, title, is_public: isPublic }, { withCredentials: true });
           dispatch({ type: UPDATE_SAVED });
         }
       }, saveTimeout);
@@ -109,7 +109,9 @@ export const saveJournal = (
 export const getJournals = (): AppThunk => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get("/api/journals");
+      const { data } = await axios.get("http://localhost:3005/api/journals", {
+        withCredentials: true,
+      });
       dispatch({ type: GET_JOURNALS, payload: { data } });
     } catch (e: any) {
       dispatch(displayError(e.response?.data || "Error fetching journals"));
@@ -129,7 +131,7 @@ export const deleteJournal = (date: string): AppThunk => {
           journals: { editCount: newCount },
         } = getState();
         if (oldCount === newCount) {
-          await axios.delete("/api/journals", { data: { date } });
+          await axios.delete("http://localhost:3005/api/journals", { data: { date } });
           dispatch({ type: UPDATE_SAVED });
         }
       }, saveTimeout);

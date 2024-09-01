@@ -1,16 +1,14 @@
+import { Pool } from 'pg';
+
 interface User {
   id: number;
   username: string;
   password: string;
 }
 
-interface DB {
-  query: (queryText: string, values?: any[]) => Promise<{ rows: any[] }>;
-}
-
 const getResult = ({ rows }: { rows: any[] }): any => rows.length && rows[0];
 
-const queryGenerator = (db: DB) => {
+const queryGenerator = (db: Pool) => {
   const getUserByValue = async (column: string, value: string): Promise<User | undefined> => {
     const values = [value];
     const queryString = `

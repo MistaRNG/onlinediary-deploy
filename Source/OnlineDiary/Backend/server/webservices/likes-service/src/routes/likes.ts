@@ -1,4 +1,4 @@
-import { Router, Response, NextFunction } from "express";
+import { Router, Response, NextFunction } from 'express';
 
 export default (db: any) => {
   const router = Router();
@@ -47,32 +47,26 @@ export default (db: any) => {
     return rows[0];
   };
 
-  router.get("/:journal_id", async (req: any, res: Response, next: NextFunction) => {
+  router.get('/:journal_id', async (req: any, res: Response, next: NextFunction) => {
     const { journal_id } = req.params;
-    const userId = req.session.user_id;
+    const userId = req.session?.user_id;
 
     if (!userId) {
-      return res.status(401).json({ error: "User not authenticated" });
+      return res.status(401).json({ error: 'User not authenticated' });
     }
 
     try {
       const count = await getLikes(journal_id);
       const userLiked = await hasUserLiked(userId, journal_id);
-
       res.status(200).json({ count, userLiked });
     } catch (error) {
       next(error);
     }
   });
 
-  router.get("/users/:journal_id", async (req: any, res: Response, next: NextFunction) => {
+  router.get('/users/:journal_id', async (req: any, res: Response, next: NextFunction) => {
     const { journal_id } = req.params;
-    const userId = req.session.user_id;
-  
-    if (!userId) {
-      return res.status(401).json({ error: "User not authenticated" });
-    }
-  
+
     try {
       const query = `
         SELECT users.username 
@@ -82,41 +76,56 @@ export default (db: any) => {
       `;
       const values = [journal_id];
       const { rows } = await db.query(query, values);
-  
+
       res.status(200).json(rows.map((row: { username: string }) => row.username));
     } catch (error) {
       next(error);
     }
   });
 
-  router.post("/", async (req: any, res: Response, next: NextFunction) => {
-    const { journal_id } = req.body;
-    const userId = req.session.user_id;
+  router.get('/:journal_id', async (req: any, res: Response, next: NextFunction) => {
+    const { journal_id } = req.params;
+    const userId = req.session?.user_id;
 
     if (!userId) {
-      return res.status(401).json({ error: "User not authenticated" });
+      return res.status(401).json({ error: 'User not authenticated' });
+    }
+
+    try {
+      const count = await getLikes(journal_id);
+      const userLiked = await hasUserLiked(userId, journal_id);
+      res.status(200).json({ count, userLiked });
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  router.post('/', async (req: any, res: Response, next: NextFunction) => {
+    const { journal_id } = req.body;
+    const userId = req.session?.user_id;
+
+    if (!userId) {
+      return res.status(401).json({ error: 'User not authenticated' });
     }
 
     try {
       const like = await postLike(userId, journal_id);
-      console.log("Successfully liked journal:", like);
       res.status(200).json(like);
     } catch (error) {
       next(error);
     }
   });
 
-  router.delete("/", async (req: any, res: Response, next: NextFunction) => {
+  router.delete('/', async (req: any, res: Response, next: NextFunction) => {
     const { journal_id } = req.body;
-    const userId = req.session.user_id;
+    const userId = req.session?.user_id;
 
     if (!userId) {
-      return res.status(401).json({ error: "User not authenticated" });
+      return res.status(401).json({ error: 'User not authenticated' });
     }
 
     try {
       const like = await deleteLike(userId, journal_id);
-      console.log("Successfully removed like:", like);
       res.status(200).json(like);
     } catch (error) {
       next(error);

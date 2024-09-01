@@ -43,7 +43,7 @@ const Main: React.FC<MainProps> = ({
   useEffect(() => {
     const fetchJournalId = async () => {
       try {
-        const response = await axios.get(`/api/journals/get-id-by-date`, {
+        const response = await axios.get(`http://localhost:3005/api/journals/get-id-by-date`, {
           params: { date: parsedDate.toISOString().split('T')[0] }
         });
         setJournalId(response.data.journalId);
@@ -62,7 +62,7 @@ const Main: React.FC<MainProps> = ({
     }
 
     try {
-      const response = await axios.get(`/api/likes/users/${journalId}`);
+      const response = await axios.get(`http://localhost:3003/api/likes/users/${journalId}`);
       setLikes(response.data);
     } catch (error) {
       console.error("Error fetching likes:", error);
@@ -76,7 +76,7 @@ const Main: React.FC<MainProps> = ({
     }
 
     try {
-      const response = await axios.get(`/api/comments/${journalId}`);
+      const response = await axios.get(`http://localhost:3002/api/comments/${journalId}`);
       setComments(response.data);
     } catch (error) {
       console.error("Error fetching comments:", error);

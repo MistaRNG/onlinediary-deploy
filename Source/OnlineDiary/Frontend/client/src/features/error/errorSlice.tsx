@@ -19,10 +19,11 @@ const initState: ErrorState = { error: null, trackErrorChange: true };
 const DISPLAY_ERROR = "error/DISPLAY_ERROR" as const;
 const REMOVE_ERROR = "error/REMOVE_ERROR" as const;
 
-export const displayError = (error: string): DisplayErrorAction => {
+export const displayError = (error: string | { error: string }): DisplayErrorAction => {
+  const errorMessage = typeof error === "string" ? error : error.error || "Ein unbekannter Fehler ist aufgetreten";
   return {
     type: DISPLAY_ERROR,
-    payload: { error },
+    payload: { error: errorMessage },
   };
 };
 

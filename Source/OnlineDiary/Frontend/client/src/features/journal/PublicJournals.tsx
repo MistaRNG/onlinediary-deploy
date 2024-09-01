@@ -53,7 +53,9 @@ const PublicJournals: React.FC = () => {
 
   const fetchLikes = async (journalId: number) => {
     try {
-      const response = await axios.get(`/api/likes/${journalId}`);
+      const response = await axios.get(`http://localhost:3003/api/likes/${journalId}`, {
+        withCredentials: true,
+      });
       setLikes((prev) => ({ ...prev, [journalId]: response.data.count || 0 }));
       setUserLiked((prev) => ({ ...prev, [journalId]: response.data.userLiked || false }));
     } catch (error) {
@@ -68,7 +70,7 @@ const PublicJournals: React.FC = () => {
 
   const fetchComments = async (journalId: number) => {
     try {
-      const response = await axios.get(`/api/comments/${journalId}`);
+      const response = await axios.get(`http://localhost:3002/api/comments/${journalId}`);
       setComments(response.data);
     } catch (error) {
       console.error("Error fetching comments:", error);
@@ -76,18 +78,29 @@ const PublicJournals: React.FC = () => {
   };
 
   const handleLike = async (journalId: number) => {
-    if (!userLiked[journalId]) {
-      await axios.post("/api/likes", { journal_id: journalId });
-
-      setUserLiked((prev) => ({ ...prev, [journalId]: true }));
-      setLikes((prev) => ({ ...prev, [journalId]: prev[journalId] + 1 }));
-    } else {
-      await axios.delete("/api/likes", { data: { journal_id: journalId } });
-
-      setUserLiked((prev) => ({ ...prev, [journalId]: false }));
-      setLikes((prev) => ({ ...prev, [journalId]: prev[journalId] - 1 }));
+    try {
+      if (!userLiked[journalId]) {
+        await axios.post(
+          "http://localhost:3003/api/likes",
+          { journal_id: journalId },
+          { withCredentials: true }
+        );
+  
+        setUserLiked((prev) => ({ ...prev, [journalId]: true }));
+        setLikes((prev) => ({ ...prev, [journalId]: prev[journalId] + 1 }));
+      } else {
+        await axios.delete("http://localhost:3003/api/likes", {
+          data: { journal_id: journalId },
+          withCredentials: true,
+        });
+  
+        setUserLiked((prev) => ({ ...prev, [journalId]: false }));
+        setLikes((prev) => ({ ...prev, [journalId]: prev[journalId] - 1 }));
+      }
+    } catch (error) {
+      console.error("Error liking/unliking:", error);
     }
-  };
+  };  
 
   const openJournalModal = (journal: any) => {
     const formattedDate = moment(journal.date).format("dddd, MMMM D, YYYY");
@@ -115,19 +128,34 @@ const PublicJournals: React.FC = () => {
 
   const handleCommentSubmit = async () => {
     if (newComment.trim() === "") return;
-
+  
     try {
-      const response = await axios.post("/api/comments", {
-        journal_id: selectedJournal.id,
-        content: newComment,
-      });
-
+      const response = await axios.post(
+        "http://localhost:3002/api/comments",
+        {
+          journal_id: selectedJournal.id,
+          content: newComment,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+  
       setComments([...comments, response.data]);
       setNewComment("");
     } catch (error) {
       console.error("Error posting comment:", error);
+      if (error.response) {
+        console.error("Response data:", error.response.data);
+        console.error("Response status:", error.response.status);
+        console.error("Response headers:", error.response.headers);
+      } else if (error.request) {
+        console.error("Request data:", error.request);
+      } else {
+        console.error("Error message:", error.message);
+      }
     }
-  };
+  };  
 
   useEffect(() => {
     Object.values(journals).forEach((journal: any) => {

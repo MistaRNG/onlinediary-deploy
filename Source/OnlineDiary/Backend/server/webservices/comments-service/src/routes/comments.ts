@@ -1,4 +1,4 @@
-import { Router, Response, NextFunction } from "express";
+import { Router, Response, NextFunction } from 'express';
 
 export default (db: any) => {
   const router = Router();
@@ -26,23 +26,27 @@ export default (db: any) => {
     return rows;
   };
 
-  router.post("/", async (req: any, res: Response, next: NextFunction) => {
+  router.post('/', async (req: any, res: Response, next: NextFunction) => {
     const { journal_id, content } = req.body;
-    const userId = req.session.user_id;
-
+    const userId = req.session?.user_id;
+  
     if (!userId) {
-      return res.status(400).json({ error: "User ID is required." });
+      return res.status(400).json({ error: 'User ID is required.' });
     }
-
+  
+    if (!journal_id || !content) {
+      return res.status(400).json({ error: 'Journal ID and content are required.' });
+    }
+  
     try {
       const comment = await postComment(userId, journal_id, content);
       res.status(200).json(comment);
     } catch (error) {
       next(error);
     }
-  });
+  });  
 
-  router.get("/:journal_id", async (req: any, res: Response, next: NextFunction) => {
+  router.get('/:journal_id', async (req: any, res: Response, next: NextFunction) => {
     const { journal_id } = req.params;
 
     try {

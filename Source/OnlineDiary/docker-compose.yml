@@ -1,0 +1,85 @@
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backup.sql:/docker-entrypoint-initdb.d/backup.sql
+
+  comments-service:
+    build: ./Backend/server/webservices/comments-service
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+      SECRET: ${SECRET}
+    ports:
+      - "${COMMENTS_SERVICE_PORT}:${COMMENTS_SERVICE_PORT}"
+    depends_on:
+      - db
+
+  likes-service:
+    build: ./Backend/server/webservices/likes-service
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+      SECRET: ${SECRET}
+    ports:
+      - "${LIKES_SERVICE_PORT}:${LIKES_SERVICE_PORT}"
+    depends_on:
+      - db
+
+  users-service:
+    build: ./Backend/server/webservices/users-service
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+      SECRET: ${SECRET}
+    ports:
+      - "${USERS_SERVICE_PORT}:${USERS_SERVICE_PORT}"
+    depends_on:
+      - db
+
+  journals-service:
+    build: ./Backend/server/webservices/journals-service
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+      SECRET: ${SECRET}
+    ports:
+      - "${JOURNALS_SERVICE_PORT}:${JOURNALS_SERVICE_PORT}"
+    depends_on:
+      - db
+
+  mode-service:
+    build: ./Backend/server/webservices/mode-service
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+      SECRET: ${SECRET}
+    ports:
+      - "${MODE_SERVICE_PORT}:${MODE_SERVICE_PORT}"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
