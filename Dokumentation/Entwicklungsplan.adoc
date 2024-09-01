@@ -54,9 +54,9 @@
 {empty} +
 {empty} +
 
-=== Likes und Kommentarfunktion für andere Nutzer
+=== Likes und Kommentarfunktion für andere Nutzer  [✓]
 * Ziel: Benutzer können die Tagebucheinträge anderer Nutzer liken und kommentieren, um soziale Interaktionen zu ermöglichen.
-* Zeitplan: Bis 02.09. umgesetzt.
+* Zeitplan: Bis 02.09. umgesetzt. (*erledigt am 29.08.2024*)
 
 {empty} +
 {empty} +
