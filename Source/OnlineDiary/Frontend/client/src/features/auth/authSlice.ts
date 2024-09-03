@@ -7,10 +7,20 @@ const initState: any = null;
 export const getCurrentUser = () => {
   return async (dispatch: any) => {
     try {
-      const { data: username }: any = await axios.get("http://localhost:3004/api/users");
-      dispatch({ type: RECEIVE_USER, payload: { username } });
+      const response = await axios.get("http://localhost:3004/api/users", {
+        withCredentials: true,
+      });
+
+      const { username } = response.data;
+
+      if (typeof username === 'string') {
+        dispatch({ type: RECEIVE_USER, payload: { username } });
+      } else {
+        console.warn('Received username is not a string:', username);
+        dispatch({ type: RECEIVE_USER, payload: { username: null } });
+      }
     } catch (e: any) {
-      dispatch(displayError(e.response?.data || "Error fetching user"));
+      console.error('Error fetching current user:', e.response?.data || e.message);
       dispatch({ type: RECEIVE_USER, payload: { username: null } });
     }
   };
@@ -72,10 +82,13 @@ export const register = (id, password, confirmPassword, fn) => {
 const reducer = (state: any = initState, action: any): any => {
   switch (action.type) {
     case RECEIVE_USER:
-      const {
-        payload: { username },
-      } = action;
-      if (!username) return "";
+      const { payload } = action;
+      const username = payload?.username;
+
+      if (!username || typeof username !== 'string') {
+        console.warn('Username is missing or not a string:', username);
+        return "";
+      }
       return username;
     default:
       return state;

@@ -9,8 +9,12 @@ const Redirect: React.FC = () => {
   const { username } = useCurrentUser();
 
   useEffect(() => {
-    const url = username === "" ? "/login" : `/journal/${getTodayDate()}`;
-    navigate(url);
+    if (username) {
+      const url = `/journal/${getTodayDate()}`;
+      navigate(url);
+    } else {
+      navigate("/login");
+    }
   }, [username, navigate]);
 
   return <Loading />;

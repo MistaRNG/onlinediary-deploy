@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^4.2.1",
+    "@mui/material": "^6.0.2",
     "@reduxjs/toolkit": "^1.8.1",
     "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^5.16.4",

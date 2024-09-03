@@ -314,7 +314,7 @@ const PublicJournals: React.FC = () => {
               marginBottom: "0.5em",
             }}
           >
-            Öffentlich
+            {selectedJournal?.title || "Öffentlich"}
           </h2>
 
           <p

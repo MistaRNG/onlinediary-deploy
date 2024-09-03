@@ -81,5 +81,14 @@ services:
     depends_on:
       - db
 
+  auth-service:
+    build: ./Backend/server/webservices/auth-service
+    environment:
+      GITLAB_CLIENT_ID: ${GITLAB_CLIENT_ID}
+      GITLAB_CLIENT_SECRET: ${GITLAB_CLIENT_SECRET}
+      SECRET: ${SECRET}
+    ports:
+      - "${AUTH_SERVICE_PORT}:${AUTH_SERVICE_PORT}"
+
 volumes:
   postgres_data:

@@ -7,7 +7,7 @@ const useCurrentUser = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const { hasCheckedUsername, username } = useSelector((state: RootState) => {
-    const username = state.username;
+    const username = typeof state.username === 'string' ? state.username : null;
     return { hasCheckedUsername: username !== null, username };
   });
 
@@ -15,7 +15,7 @@ const useCurrentUser = () => {
     if (!hasCheckedUsername) {
       dispatch(getCurrentUser());
     }
-  }, [hasCheckedUsername]);
+  }, [hasCheckedUsername, dispatch]);
 
   return { hasCheckedUsername, username };
 };

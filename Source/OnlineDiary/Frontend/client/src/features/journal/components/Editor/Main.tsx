@@ -60,23 +60,27 @@ const Main: React.FC<MainProps> = ({
       console.warn("Journal ID is undefined, cannot fetch likes.");
       return;
     }
-
+  
     try {
-      const response = await axios.get(`http://localhost:3003/api/likes/users/${journalId}`);
+      const response = await axios.get(`http://localhost:3003/api/likes/users/${journalId}`, {
+        withCredentials: true,
+      });
       setLikes(response.data);
     } catch (error) {
       console.error("Error fetching likes:", error);
     }
   };
-
+  
   const fetchComments = async () => {
     if (!journalId) {
       console.warn("Journal ID is undefined, cannot fetch comments.");
       return;
     }
-
+  
     try {
-      const response = await axios.get(`http://localhost:3002/api/comments/${journalId}`);
+      const response = await axios.get(`http://localhost:3002/api/comments/${journalId}`, {
+        withCredentials: true,
+      });
       setComments(response.data);
     } catch (error) {
       console.error("Error fetching comments:", error);
