@@ -8,6 +8,8 @@ import queryGenerator from './helpers/queryGenerator';
 import pgSession from 'connect-pg-simple';
 import cors from 'cors';
 import jwt from 'jsonwebtoken';
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './swaggerConfig';
 
 dotenv.config();
 
@@ -35,6 +37,9 @@ app.use(cors({
 }));
 
 const PgSessionStore = pgSession(session);
+
+app.get('/api-docs-json', (req, res) => res.json(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(
   session({
@@ -88,8 +93,34 @@ function createJWT(user: User) {
   return jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
 }
 
+/**
+ * @swagger
+ * /auth/gitlab:
+ *   get:
+ *     summary: Start GitLab authentication
+ *     tags: [Authentication and Authorization]
+ *     responses:
+ *       302:
+ *         description: Redirects to GitLab for authentication
+ */
 app.get('/api/auth/gitlab', passport.authenticate('gitlab'));
 
+/**
+ * @swagger
+ * /auth/gitlab/callback:
+ *   get:
+ *     summary: GitLab authentication callback
+ *     tags: [Authentication and Authorization]
+ *     responses:
+ *       200:
+ *         description: Authentication successful and session saved
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       302:
+ *         description: Redirect to login on failure
+ */
 app.get('/api/auth/gitlab/callback', passport.authenticate('gitlab', { failureRedirect: '/login' }), async (req: Request, res: Response) => {
   if (!req.user) {
     return res.redirect('/?error=User data missing');

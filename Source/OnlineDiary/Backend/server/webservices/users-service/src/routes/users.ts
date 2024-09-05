@@ -7,6 +7,44 @@ const { getUserByValue, createNewUser } = queryGenerator(db);
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * /users/login:
+ *   post:
+ *     summary: Log in a user
+ *     tags: [User Management]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/LoginRequest'
+ *     responses:
+ *       200:
+ *         description: Successfully logged in
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserResponse'
+ *       400:
+ *         description: Username is required
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       401:
+ *         description: Invalid login credentials
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Error saving session
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ */
 router.post('/login', async (req: any, res: Response, next: NextFunction) => {
   const { username, password } = req.body;
   try {
@@ -42,6 +80,38 @@ router.post('/login', async (req: any, res: Response, next: NextFunction) => {
   }
 });
 
+/**
+ * @swagger
+ * /users/register:
+ *   post:
+ *     summary: Register a new user
+ *     tags: [User Management]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/RegisterRequest'
+ *     responses:
+ *       201:
+ *         description: User successfully registered
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserResponse'
+ *       400:
+ *         description: Validation errors or username already taken
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       500:
+ *         description: Error creating user or saving session
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ */
 router.post('/register', async (req: any, res: Response, next: NextFunction) => {
   const { username, password, confirmPassword } = req.body;
 
@@ -79,12 +149,52 @@ router.post('/register', async (req: any, res: Response, next: NextFunction) => 
   }
 });
 
+/**
+ * @swagger
+ * /users/logout:
+ *   post:
+ *     summary: Log out the current user
+ *     tags: [User Management]
+ *     responses:
+ *       200:
+ *         description: Successfully logged out
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserResponse'
+ */
 router.post('/logout', (req: any, res: Response) => {
   req.session.destroy(() => {
     res.status(200).json({ message: 'Erfolgreich abgemeldet' });
   });
 });
 
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     summary: Get the current user's information
+ *     tags: [User Management]
+ *     responses:
+ *       200:
+ *         description: User information retrieved
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserResponse'
+ *       401:
+ *         description: Not authorized
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       404:
+ *         description: User not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ */
 router.get('/', async (req: any, res: Response, next: NextFunction) => {
   const { user_id } = req.session;
 
@@ -103,6 +213,32 @@ router.get('/', async (req: any, res: Response, next: NextFunction) => {
   }
 });
 
+/**
+ * @swagger
+ * /users/profile:
+ *   get:
+ *     summary: Get the current user's profile
+ *     tags: [User Management]
+ *     responses:
+ *       200:
+ *         description: User profile retrieved
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserResponse'
+ *       401:
+ *         description: Not authorized
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       404:
+ *         description: User not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ */
 router.get('/profile', async (req: any, res: Response, next: NextFunction) => {
   const { user_id } = req.session;
   if (!user_id) {

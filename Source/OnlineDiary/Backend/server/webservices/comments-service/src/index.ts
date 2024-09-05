@@ -5,6 +5,8 @@ import session from 'express-session';
 import pgSession from 'connect-pg-simple';
 import commentsRouter from './routes/comments';
 import db from './database/db';
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './swaggerConfig';
 
 dotenv.config();
 
@@ -12,6 +14,9 @@ const app = express();
 const PORT = process.env.PORT || 3002;
 
 const PgSessionStore = pgSession(session);
+
+app.get('/api-docs-json', (req, res) => res.json(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(
   session({

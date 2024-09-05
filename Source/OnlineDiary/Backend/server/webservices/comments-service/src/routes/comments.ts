@@ -26,6 +26,26 @@ export default (db: any) => {
     return rows;
   };
 
+  /**
+   * @swagger
+   * /comments:
+   *   post:
+   *     summary: Create a new comment
+   *     tags: [Comment Management]
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             $ref: '#/components/schemas/NewComment'
+   *     responses:
+   *       200:
+   *         description: The created comment
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Comment'
+   */
   router.post('/', async (req: any, res: Response, next: NextFunction) => {
     const { journal_id, content } = req.body;
     const userId = req.session?.user_id;
@@ -46,6 +66,29 @@ export default (db: any) => {
     }
   });  
 
+  /**
+   * @swagger
+   * /comments/{journal_id}:
+   *   get:
+   *     summary: Get comments for a journal
+   *     tags: [Comment Management]
+   *     parameters:
+   *       - in: path
+   *         name: journal_id
+   *         schema:
+   *           type: integer
+   *         required: true
+   *         description: The ID of the journal
+   *     responses:
+   *       200:
+   *         description: List of comments
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: array
+   *               items:
+   *                 $ref: '#/components/schemas/Comment'
+   */
   router.get('/:journal_id', async (req: any, res: Response, next: NextFunction) => {
     const { journal_id } = req.params;
 

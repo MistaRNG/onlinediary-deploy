@@ -5,6 +5,8 @@ import session from 'express-session';
 import pgSession from 'connect-pg-simple';
 import { Pool } from 'pg';
 import userRouter from './routes/users';
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './swaggerConfig';
 
 dotenv.config();
 
@@ -20,6 +22,9 @@ const pool = new Pool({
 });
 
 const PgSessionStore = pgSession(session);
+
+app.get('/api-docs-json', (req, res) => res.json(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(
   session({
