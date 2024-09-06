@@ -57,8 +57,9 @@ const queryGenerator = (db: DB) => {
     title: string,
     is_public: boolean
   ): Promise<JournalEntry> => {
-    const values1 = [id, date];
-    const values2 = [JSON.stringify(content), id, date, title, is_public];
+    const formattedContent = typeof content === 'string' ? content : JSON.stringify(content);
+    const values2 = [formattedContent, id, date, title, is_public];
+
     const querySelectString = `
       SELECT * FROM journals
       WHERE user_id = $1 AND date = $2;`;
@@ -76,25 +77,25 @@ const queryGenerator = (db: DB) => {
       VALUES ($1, $2, $3, $4, $5)
       RETURNING *;`;
 
-    const queryDeleteString = `
-      DELETE FROM journals
-      WHERE user_id = $1 AND date = $2 AND NOT id = $3
-      RETURNING *;`;
-
     try {
-      const { rows } = await db.query(querySelectString, values1);
+      const { rows } = await db.query(querySelectString, [id, date]);
       const result = rows.length
         ? await db.query(queryUpdateString, values2)
         : await db.query(queryInsertString, values2);
 
-      if (rows.length > 1) {
-        const values3 = [id, date, rows[0].id];
-        await db.query(queryDeleteString, values3);
+      if (typeof result.rows[0].content === 'string') {
+        try {
+          result.rows[0].content = JSON.parse(result.rows[0].content);
+        } catch (error) {
+          console.error('Error parsing journal content:', error);
+          throw new Error('Invalid content format stored in database.');
+        }
       }
 
       return result.rows[0] as JournalEntry;
     } catch (e) {
-      throw e;
+      console.error('Database operation failed:', e);
+      throw new Error('Failed to create or update the journal entry.');
     }
   };
 

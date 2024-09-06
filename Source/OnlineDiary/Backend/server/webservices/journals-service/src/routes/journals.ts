@@ -32,7 +32,7 @@ export default (db: any) => {
    *               $ref: '#/components/schemas/ErrorResponse'
    */
   router.post('/', async (req: any, res: Response, next: NextFunction) => {
-    const { content, date, title, is_public } = req.body;
+    let { content, date, title, is_public } = req.body;
     const userId = req.session.user_id;
 
     if (!userId) {
@@ -40,10 +40,34 @@ export default (db: any) => {
     }
 
     try {
+      const standardizeContentFormat = (content: any) => {
+        if (content.blocks && content.entityMap) {
+          return content;
+        }
+
+        return {
+          blocks: [
+            {
+              key: 'default',
+              text: content.text || '',
+              type: 'unstyled',
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            },
+          ],
+          entityMap: {},
+        };
+      };
+
+      content = standardizeContentFormat(typeof content === 'string' ? JSON.parse(content) : content);
+
       const journal = await postJournal(content, userId, date, title, is_public);
       res.status(200).json(journal);
     } catch (error) {
-      next(error);
+      console.error('Internal error:', error);
+      res.status(500).json({ error: 'Internal server error occurred while processing the journal entry.' });
     }
   });
 

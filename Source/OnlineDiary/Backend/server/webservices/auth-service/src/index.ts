@@ -99,9 +99,10 @@ function createJWT(user: User) {
  *   get:
  *     summary: Start GitLab authentication
  *     tags: [Authentication and Authorization]
+ *     description: "**Important Note:** This endpoint will redirect you to GitLab for authentication. This will not work within Swagger UI. Use the application to test it out."
  *     responses:
  *       302:
- *         description: Redirects to GitLab for authentication
+ *         description: Redirects to GitLab for authentication.
  */
 app.get('/api/auth/gitlab', passport.authenticate('gitlab'));
 
@@ -111,6 +112,10 @@ app.get('/api/auth/gitlab', passport.authenticate('gitlab'));
  *   get:
  *     summary: GitLab authentication callback
  *     tags: [Authentication and Authorization]
+ *     description: |
+ *       **Important Note:** This endpoint requires manual testing in your web browser.
+ *       Swagger UI does not support redirects and cookies required for the OAuth flow.
+ *       To test this, start the authentication process at `/auth/gitlab` directly in your browser, not via Swagger UI.
  *     responses:
  *       200:
  *         description: Authentication successful and session saved
