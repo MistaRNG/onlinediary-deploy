@@ -62,17 +62,17 @@
 {empty} +
 {empty} +
 
-=== Dokumentation und Erweiterung der API
+=== Dokumentation und Erweiterung der API  [✓]
 * Ziel: Erweiterung und Dokumentation der API-Schnittstellen, um eine nahtlose Kommunikation zwischen Frontend und Backend zu gewährleisten. Überprüfe die Möglichkeit, externe Integrationen zu unterstützen.
-* Zeitplan: Bis 06.09. umgesetzt.
+* Zeitplan: Bis 06.09. umgesetzt. (*erledigt am 06.09.2024*)
 
 {empty} +
 {empty} +
 {empty} +
 
-=== Snapshot- und Unit-Tests
+=== Snapshot- und Unit-Tests  [✓]
 * Ziel: Einführung von Unit- und Integrationstests für kritische Komponenten, um die Stabilität der Anwendung zu gewährleisten.
-* Zeitplan: Bis 06.09. umgesetzt.
+* Zeitplan: Bis 06.09. umgesetzt. (*erledigt am 06.09.2024*)
 
 {empty} +  
 {empty} +
