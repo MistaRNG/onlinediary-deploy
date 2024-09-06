@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LongDateDisplay Component Snapshot Tests should render the LongDateDisplay component correctly 1`] = `
+<DocumentFragment>
+  <div>
+    Friday, September 6, 2024
+  </div>
+</DocumentFragment>
+`;

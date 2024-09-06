@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToggleDarkModeButton matches the snapshot when darkMode is false 1`] = `
+<DocumentFragment>
+  <div
+    class="DarkModeButton"
+  >
+    <button
+      class="bp4-button"
+      type="button"
+    >
+      <span
+        aria-hidden="true"
+        class="bp4-icon bp4-icon-moon"
+        icon="moon"
+      >
+        <svg
+          data-icon="moon"
+          height="16"
+          role="img"
+          viewBox="0 0 16 16"
+          width="16"
+        >
+          <path
+            d="M15 11.38A7.835 7.835 0 017.85 16C3.51 16 0 12.49 0 8.15 0 4.97 1.89 2.23 4.62 1c-.45.99-.7 2.08-.7 3.23a7.85 7.85 0 007.85 7.85c1.15 0 2.24-.25 3.23-.7z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ToggleDarkModeButton matches the snapshot when darkMode is true 1`] = `
+<DocumentFragment>
+  <div
+    class="DarkModeButton"
+  >
+    <button
+      class="bp4-button"
+      type="button"
+    >
+      <span
+        aria-hidden="true"
+        class="bp4-icon bp4-icon-flash"
+        icon="flash"
+      >
+        <svg
+          data-icon="flash"
+          height="16"
+          role="img"
+          viewBox="0 0 16 16"
+          width="16"
+        >
+          <path
+            d="M4 8c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1s.45 1 1 1h2c.55 0 1-.45 1-1zm4-4c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1S7 .45 7 1v2c0 .55.45 1 1 1zM3.79 5.21a1.003 1.003 0 001.42-1.42l-1.5-1.5a1.003 1.003 0 00-1.42 1.42l1.5 1.5zm.71 5.29c-.28 0-.53.11-.71.29l-1.5 1.5a1.003 1.003 0 001.42 1.42l1.5-1.5a1.003 1.003 0 00-.71-1.71zm7-5c.28 0 .53-.11.71-.29l1.5-1.5a1.003 1.003 0 00-1.42-1.42l-1.5 1.5a1.003 1.003 0 00.71 1.71zm.71 5.29a1.003 1.003 0 00-1.42 1.42l1.5 1.5a1.003 1.003 0 001.42-1.42l-1.5-1.5zM15 7h-2c-.55 0-1 .45-1 1s.45 1 1 1h2c.55 0 1-.45 1-1s-.45-1-1-1zM8 5C6.34 5 5 6.34 5 8s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 4c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm0 3c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;

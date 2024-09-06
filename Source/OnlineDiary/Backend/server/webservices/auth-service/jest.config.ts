@@ -7,15 +7,9 @@ const config: Config = {
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.(ts|tsx)$': ['ts-jest', { tsconfig: 'tsconfig.json', useESM: true }],
   },
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.json',
-      useESM: true,
-    },
-  },
 };
 
 export default config;

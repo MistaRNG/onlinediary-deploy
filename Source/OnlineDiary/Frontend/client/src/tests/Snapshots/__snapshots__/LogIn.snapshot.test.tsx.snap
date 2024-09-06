@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogIn Component Snapshot Tests should render the LogIn component correctly 1`] = `
+<DocumentFragment>
+  <h1>
+    Login
+  </h1>
+  <button
+    class="bp4-button bp4-large bp4-intent-primary"
+    style="margin-top: 2em; background-color: rgb(0, 107, 179); color: rgb(255, 255, 255); padding: 1em 1.5em; font-size: 1.5rem; margin-bottom: 1.5em; width: 90%; max-width: 400px; display: flex; align-items: center; justify-content: flex-start; gap: 0.5em; text-align: left;"
+    type="button"
+  >
+    <span
+      class="bp4-button-text"
+    >
+      <svg
+        id="Login"
+        style="vertical-align: middle; margin-right: 0.5em; margin-bottom: 0.2em;"
+        viewBox="0 0 24 24"
+        width="50px"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          class="color000000 svgShape"
+          fill="#ffffff"
+        >
+          <path
+            class="color000000 svgShape"
+            d="M19 4h-2a1 1 0 0 0 0 2h1v12h-1a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1zm-7.2 3.4a1 1 0 0 0-1.6 1.2L12 11H4a1 1 0 0 0 0 2h8.09l-1.72 2.44a1 1 0 0 0 .24 1.4 1 1 0 0 0 .58.18 1 1 0 0 0 .81-.42l2.82-4a1 1 0 0 0 0-1.18z"
+            fill="#ffffff"
+          />
+        </g>
+      </svg>
+      <svg
+        height="30px"
+        id="gitlab"
+        style="vertical-align: middle; margin-right: 0.5em; margin-bottom: 0.3em;"
+        viewBox="0 0 24 24"
+        width="30px"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m12 23.054 4.419-13.6H7.581L12 23.054z"
+          fill="#E24329"
+        />
+        <path
+          d="m12 23.054-4.419-13.6H1.388L12 23.054z"
+          fill="#FC6D26"
+        />
+        <path
+          d="M1.388 9.453.045 13.586a.917.917 0 0 0 .332 1.023L12 23.054 1.388 9.453z"
+          fill="#FCA326"
+        />
+        <path
+          d="M1.388 9.454h6.193L4.919 1.262a.457.457 0 0 0-.87 0L1.388 9.454z"
+          fill="#E24329"
+        />
+        <path
+          d="m12 23.054 4.419-13.6h6.193L12 23.054z"
+          fill="#FC6D26"
+        />
+        <path
+          d="m22.612 9.453 1.343 4.133a.917.917 0 0 1-.332 1.023L12 23.054 22.612 9.453z"
+          fill="#FCA326"
+        />
+        <path
+          d="M22.612 9.454h-6.193l2.662-8.191a.457.457 0 0 1-.87 0l2.661 8.191z"
+          fill="#E24329"
+        />
+      </svg>
+      Use GitLab for Login
+    </span>
+  </button>
+  <form
+    id="login-form"
+    style="border-top: 1px solid #444; padding-top: 1em; max-width: 300px; margin: 1em auto 0px auto;"
+  >
+    <div
+      aria-label="⚠️ GitLab login is recommended for better security – use standard login only if needed."
+      class=""
+      data-mui-internal-clone-element="true"
+    >
+      <div
+        class="bp4-form-group"
+      >
+        <label
+          class="bp4-label"
+        >
+          Username 
+          <span
+            class="bp4-text-muted"
+          />
+        </label>
+        <div
+          class="bp4-form-content"
+        >
+          <div
+            class="bp4-input-group bp4-large"
+          >
+            <input
+              class="bp4-input"
+              style="width: 100%;"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-label="⚠️ GitLab login is recommended for better security – use standard login only if needed."
+      class=""
+      data-mui-internal-clone-element="true"
+    >
+      <div
+        class="bp4-form-group"
+      >
+        <label
+          class="bp4-label"
+        >
+          Password 
+          <span
+            class="bp4-text-muted"
+          />
+        </label>
+        <div
+          class="bp4-form-content"
+        >
+          <div
+            class="bp4-input-group bp4-large"
+          >
+            <input
+              autocomplete="on"
+              class="bp4-input"
+              style="width: 100%; padding-right: 0px;"
+              type="password"
+            />
+            <span
+              class="bp4-input-action"
+            >
+              <button
+                class="bp4-button bp4-minimal bp4-intent-warning"
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="bp4-icon bp4-icon-lock"
+                  icon="lock"
+                >
+                  <svg
+                    data-icon="lock"
+                    height="16"
+                    role="img"
+                    viewBox="0 0 16 16"
+                    width="16"
+                  >
+                    <path
+                      d="M13.96 7H12V3.95C12 1.77 10.21 0 8 0S4 1.77 4 3.95V7H1.96c-.55 0-.96.35-.96.9v6.91c0 .54.41 1.19.96 1.19h12c.55 0 1.04-.65 1.04-1.19V7.9c0-.55-.49-.9-1.04-.9zM6 7V3.95c0-1.09.9-1.97 2-1.97s2 .88 2 1.97V7H6z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="bp4-button bp4-large"
+      style="background-color: rgb(119, 119, 119); border-color: #555; color: rgb(255, 255, 255); width: 100%; transition: background-color 0.3s ease; cursor: pointer;"
+      type="submit"
+    >
+      <span
+        class="bp4-button-text"
+      >
+        Login
+      </span>
+    </button>
+    <p
+      style="color: rgb(255, 165, 0); font-size: 0.9rem; text-align: center; margin-top: 0.5em;"
+    >
+      ⚠️ Use standard login only in emergencies – GitLab login is more secure!
+    </p>
+  </form>
+  <div
+    class="user-link"
+    style="text-align: center; margin-top: 1em;"
+  >
+    Not a member? 
+    <a
+      href="/register"
+    >
+      Register
+    </a>
+  </div>
+</DocumentFragment>
+`;

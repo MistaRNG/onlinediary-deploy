@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PublicJournals Component Snapshot Test renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="bright"
+  >
+    <div
+      class="Logout-Button"
+    >
+      <button
+        class="bp4-button"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="bp4-icon bp4-icon-people"
+          icon="people"
+        >
+          <svg
+            data-icon="people"
+            height="16"
+            role="img"
+            viewBox="0 0 16 16"
+            width="16"
+          >
+            <path
+              d="M13.69 13.98c-.05-.24-.14-.5-.25-.76-.36-.86-1.12-1.33-2.69-2-.14-.06-.59-.25-.6-.25-.21-.09-.36-.15-.5-.22.02-.1.02-.2.03-.31 0-.04.01-.08.01-.13-.07-.06-.13-.12-.19-.19.22-.32.4-.67.54-1.05.02-.06.02-.06.03-.1.29-.23.48-.57.59-.96.16-.33.25-.73.21-1.16-.03-.4-.16-.76-.37-1.03-.02-.53-.07-1.13-.15-1.54-.01-.06-.02-.12-.03-.19.23-.06.48-.09.72-.09.49 0 1.05.16 1.44.46.38.29.67.7.8 1.17.03.1.05.21.07.31.07.37.11.94.11 1.33v.05c.14.06.27.21.29.51.02.25-.07.45-.13.54-.05.21-.16.44-.38.48-.02.1-.05.2-.09.3 0 .01-.01.03-.01.03-.17.44-.43.83-.75 1.11v.14c.03.35-.09.59.83 1 .93.41 2.32.84 2.6 1.5.29.66.17 1.04.17 1.04h-2.3zm-1.17-.38c.37.86.22 1.36.22 1.36H.06s-.14-.5.22-1.36 2.13-1.43 3.31-1.96c1.17-.54 1.05-.86 1.09-1.3 0-.05.01-.11.01-.17-.41-.35-.75-.86-.97-1.45v-.01s-.01-.01-.01-.02c-.04-.12-.09-.26-.12-.39-.28-.05-.44-.36-.5-.64-.06-.12-.19-.39-.16-.71.04-.41.21-.6.39-.68v-.06c0-.51.05-1.26.14-1.74.02-.13.05-.27.09-.4.17-.6.54-1.13 1.02-1.51.5-.39 1.21-.6 1.84-.6s1.34.21 1.84.6c.48.38.85.91 1.02 1.52.04.13.07.27.09.4.09.48.14 1.22.14 1.73v.07c.18.08.34.27.37.67.03.32-.09.59-.16.71-.06.28-.21.58-.48.63-.03.13-.07.26-.12.39 0 .01-.01.04-.01.04-.22.58-.55 1.08-.95 1.45v.18c.04.45-.12.77 1.06 1.3 1.18.53 2.95 1.09 3.31 1.95z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          class="bp4-button-text"
+        >
+          Entries from others
+        </span>
+      </button>
+      <button
+        class="bp4-button"
+        type="button"
+      >
+        <span
+          class="bp4-button-text"
+        >
+          Logged in as @
+        </span>
+      </button>
+      <button
+        class="bp4-button"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="bp4-icon bp4-icon-log-out"
+          icon="log-out"
+        >
+          <svg
+            data-icon="log-out"
+            height="16"
+            role="img"
+            viewBox="0 0 16 16"
+            width="16"
+          >
+            <path
+              d="M7 14H2V2h5c.55 0 1-.45 1-1s-.45-1-1-1H1C.45 0 0 .45 0 1v14c0 .55.45 1 1 1h6c.55 0 1-.45 1-1s-.45-1-1-1zm8.71-6.71l-3-3a1.003 1.003 0 00-1.42 1.42L12.59 7H6c-.55 0-1 .45-1 1s.45 1 1 1h6.59l-1.29 1.29c-.19.18-.3.43-.3.71a1.003 1.003 0 001.71.71l3-3c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+    <div
+      class="page-container"
+    >
+      <div
+        class="header-container"
+        style="position: fixed; filter: none; margin: 70px 0px 0px 1px; z-index: 1000; display: block;"
+      >
+        <button
+          class="bp4-button back-to-editor-button"
+          style="margin-bottom: 30px; display: block;"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="bp4-icon bp4-icon-arrow-left"
+            icon="arrow-left"
+          >
+            <svg
+              data-icon="arrow-left"
+              height="16"
+              role="img"
+              viewBox="0 0 16 16"
+              width="16"
+            >
+              <path
+                d="M13.99 6.99H4.41L7.7 3.7a1.003 1.003 0 00-1.42-1.42l-5 5a1.014 1.014 0 000 1.42l5 5a1.003 1.003 0 001.42-1.42L4.41 8.99H14c.55 0 1-.45 1-1s-.46-1-1.01-1z"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </span>
+          <span
+            class="bp4-button-text"
+          >
+            Back to Editor
+          </span>
+        </button>
+        <div
+          class="bp4-input-group bp4-large search-input"
+        >
+          <input
+            class="bp4-input"
+            placeholder="Search..."
+            style="padding-right: 0px;"
+            type="text"
+            value=""
+          />
+          <span
+            class="bp4-input-action"
+          />
+        </div>
+      </div>
+      <h2
+        style="text-align: center; width: 100%; margin-top: 20px; position: fixed; top: 30px; left: 50%; transform: translateX(-50%); z-index: 999;"
+      >
+        Public entries
+      </h2>
+      <div
+        class="content-container"
+        style="filter: none; margin-top: 100px; z-index: 0; position: relative;"
+      >
+        <div
+          class="public-journals-container"
+        >
+          <div
+            class="bp4-card bp4-interactive bp4-elevation-2 public-journal-card"
+          >
+            <h5>
+              Test Journal
+            </h5>
+            <p>
+              No Date Available
+            </p>
+            <div
+              class="card-actions"
+            >
+              <button
+                class="bp4-button"
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="bp4-icon bp4-icon-thumbs-up"
+                  icon="thumbs-up"
+                >
+                  <svg
+                    data-icon="thumbs-up"
+                    height="16"
+                    role="img"
+                    viewBox="0 0 16 16"
+                    width="16"
+                  >
+                    <path
+                      d="M15.99 9.62c-.08-.58-.73-.96-1.43-1.05-.15-.02-.32-.04-.49-.05.06-.01.11-.01.16-.02.71-.08 1.23-.47 1.15-1.05-.08-.58-.73-.96-1.43-1.05-.34-.04-.72-.07-1.13-.09h-.01c-.24-.01-.49-.02-.75-.02-.48-.02-1.11-.04-1.59-.08-.36-.03-.41-.28-.37-.53.35-.9.54-1.91.5-2.91-.04-.85-.6-1.68-1.41-1.77-.67-.07-1.16.39-.99.98C8.76 3.91 6.13 6.2 4 7.49v6c1.66 1.03 4.35 1.56 7.48 1.5.19 0 .39-.01.62-.02h.09c.22-.01.46-.03.73-.05.71-.06 1.54-.51 1.5-1.09-.03-.51-.4-.79-.87-.93.27-.02.54-.04.79-.06.71-.06 1.24-.45 1.17-1.04-.06-.58-.7-.97-1.41-1.07-.02 0-.05-.01-.07-.01.29-.02.57-.03.81-.05.71-.03 1.23-.47 1.15-1.05zM2 7H0v7h2c.55 0 1-.45 1-1V8c0-.56-.45-1-1-1z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="bp4-button-text"
+                >
+                  Like (0)
+                </span>
+              </button>
+              <button
+                class="bp4-button"
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="bp4-icon bp4-icon-comment"
+                  icon="comment"
+                >
+                  <svg
+                    data-icon="comment"
+                    height="16"
+                    role="img"
+                    viewBox="0 0 16 16"
+                    width="16"
+                  >
+                    <path
+                      d="M14 1H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h2v3a1.003 1.003 0 001.71.71L8.41 12H14c.55 0 1-.45 1-1V2c0-.55-.45-1-1-1zM3.5 8C2.67 8 2 7.33 2 6.5S2.67 5 3.5 5 5 5.67 5 6.5 4.33 8 3.5 8zm4 0C6.67 8 6 7.33 6 6.5S6.67 5 7.5 5 9 5.67 9 6.5 8.33 8 7.5 8zm4 0c-.83 0-1.5-.67-1.5-1.5S10.67 5 11.5 5s1.5.67 1.5 1.5S12.33 8 11.5 8z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="bp4-button-text"
+                >
+                  Comment
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

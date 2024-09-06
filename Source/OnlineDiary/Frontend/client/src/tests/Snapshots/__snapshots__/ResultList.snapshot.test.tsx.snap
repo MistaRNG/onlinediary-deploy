@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Result Component Snapshot Tests should render the Result component correctly with no results 1`] = `
+<DocumentFragment>
+  <div
+    class="search-result"
+  >
+    No journal is found
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Result Component Snapshot Tests should render the Result component correctly with results 1`] = `
+<DocumentFragment>
+  <div
+    class="search-result"
+  >
+    <div
+      class="bp4-card bp4-interactive bp4-elevation-2 result-list-item"
+    >
+      <div
+        class="result-content"
+      >
+        <h5>
+          September 6, 2024
+        </h5>
+        <p>
+          First Journal
+        </p>
+      </div>
+      <button
+        class="bp4-button bp4-minimal delete-button"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="bp4-icon bp4-icon-trash"
+          icon="trash"
+          style="color: rgb(253, 93, 93);"
+        >
+          <svg
+            data-icon="trash"
+            height="16"
+            role="img"
+            viewBox="0 0 16 16"
+            width="16"
+          >
+            <path
+              d="M14.49 3.99h-13c-.28 0-.5.22-.5.5s.22.5.5.5h.5v10c0 .55.45 1 1 1h10c.55 0 1-.45 1-1v-10h.5c.28 0 .5-.22.5-.5s-.22-.5-.5-.5zm-8.5 9c0 .55-.45 1-1 1s-1-.45-1-1v-6c0-.55.45-1 1-1s1 .45 1 1v6zm3 0c0 .55-.45 1-1 1s-1-.45-1-1v-6c0-.55.45-1 1-1s1 .45 1 1v6zm3 0c0 .55-.45 1-1 1s-1-.45-1-1v-6c0-.55.45-1 1-1s1 .45 1 1v6zm2-12h-4c0-.55-.45-1-1-1h-2c-.55 0-1 .45-1 1h-4c-.55 0-1 .45-1 1v1h14v-1c0-.55-.45-1-1-1z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+    <div
+      class="bp4-card bp4-interactive bp4-elevation-2 result-list-item"
+    >
+      <div
+        class="result-content"
+      >
+        <h5>
+          September 7, 2024
+        </h5>
+        <p>
+          Second Journal
+        </p>
+      </div>
+      <button
+        class="bp4-button bp4-minimal delete-button"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="bp4-icon bp4-icon-trash"
+          icon="trash"
+          style="color: rgb(253, 93, 93);"
+        >
+          <svg
+            data-icon="trash"
+            height="16"
+            role="img"
+            viewBox="0 0 16 16"
+            width="16"
+          >
+            <path
+              d="M14.49 3.99h-13c-.28 0-.5.22-.5.5s.22.5.5.5h.5v10c0 .55.45 1 1 1h10c.55 0 1-.45 1-1v-10h.5c.28 0 .5-.22.5-.5s-.22-.5-.5-.5zm-8.5 9c0 .55-.45 1-1 1s-1-.45-1-1v-6c0-.55.45-1 1-1s1 .45 1 1v6zm3 0c0 .55-.45 1-1 1s-1-.45-1-1v-6c0-.55.45-1 1-1s1 .45 1 1v6zm3 0c0 .55-.45 1-1 1s-1-.45-1-1v-6c0-.55.45-1 1-1s1 .45 1 1v6zm2-12h-4c0-.55-.45-1-1-1h-2c-.55 0-1 .45-1 1h-4c-.55 0-1 .45-1 1v1h14v-1c0-.55-.45-1-1-1z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

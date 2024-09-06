@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Title Component Snapshot Tests should render the Title component correctly 1`] = `
+<DocumentFragment>
+  <textarea
+    class="bp4-input bp4-large"
+    maxlength="60"
+    placeholder="Title"
+  />
+</DocumentFragment>
+`;

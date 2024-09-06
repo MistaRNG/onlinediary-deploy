@@ -1,0 +1,11 @@
+{
+    "name": "project-root",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "test": "npm run test:frontend && npm run test:backend",
+      "test:frontend": "npm --prefix ./Frontend/client test",
+      "test:backend": "npm --prefix ./Backend/server test"
+    }
+  }
+  

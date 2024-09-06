@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LockButton Snapshot Tests should render locked state correctly 1`] = `
+<DocumentFragment>
+  <button
+    class="bp4-button bp4-minimal bp4-intent-warning"
+    type="button"
+  >
+    <span
+      aria-hidden="true"
+      class="bp4-icon bp4-icon-lock"
+      icon="lock"
+    >
+      <svg
+        data-icon="lock"
+        height="16"
+        role="img"
+        viewBox="0 0 16 16"
+        width="16"
+      >
+        <path
+          d="M13.96 7H12V3.95C12 1.77 10.21 0 8 0S4 1.77 4 3.95V7H1.96c-.55 0-.96.35-.96.9v6.91c0 .54.41 1.19.96 1.19h12c.55 0 1.04-.65 1.04-1.19V7.9c0-.55-.49-.9-1.04-.9zM6 7V3.95c0-1.09.9-1.97 2-1.97s2 .88 2 1.97V7H6z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+  </button>
+</DocumentFragment>
+`;
+
+exports[`LockButton Snapshot Tests should render unlocked state correctly 1`] = `
+<DocumentFragment>
+  <button
+    class="bp4-button bp4-minimal bp4-intent-warning"
+    type="button"
+  >
+    <span
+      aria-hidden="true"
+      class="bp4-icon bp4-icon-unlock"
+      icon="unlock"
+    >
+      <svg
+        data-icon="unlock"
+        height="16"
+        role="img"
+        viewBox="0 0 16 16"
+        width="16"
+      >
+        <path
+          d="M11.99-.01c-2.21 0-4 1.79-4 4v3h-7c-.55 0-1 .45-1 1v7c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-7c0-.55-.45-1-1-1h-3v-3c0-1.1.9-2 2-2s2 .9 2 2v1c0 .55.45 1 1 1s1-.45 1-1v-1c0-2.21-1.79-4-4-4z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+  </button>
+</DocumentFragment>
+`;

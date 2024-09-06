@@ -1,7 +1,15 @@
 {
   "scripts": {
     "start": "nodemon -L --exec ts-node server.ts",
-    "db:reset": "node bin/resetdb.ts"
+    "db:reset": "node bin/resetdb.ts",
+    "test": "npm run test:auth && npm run test:comments && npm run test:gateway && npm run test:journals && npm run test:likes && npm run test:mode && npm run test:users",
+    "test:auth": "npm --prefix ./webservices/auth-service test",
+    "test:comments": "npm --prefix ./webservices/comments-service test",
+    "test:gateway": "npm --prefix ./webservices/gateway-service test",
+    "test:journals": "npm --prefix ./webservices/journals-service test",
+    "test:likes": "npm --prefix ./webservices/likes-service test",
+    "test:mode": "npm --prefix ./webservices/mode-service test",
+    "test:users": "npm --prefix ./webservices/users-service test"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

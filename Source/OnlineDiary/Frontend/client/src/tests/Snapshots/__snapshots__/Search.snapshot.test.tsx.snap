@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Component Snapshot Tests should render the Search component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="search"
+  >
+    <div
+      class="bp4-input-group bp4-large search-input"
+    >
+      <input
+        class="bp4-input"
+        placeholder="Search..."
+        style="padding-right: 0px;"
+        type="text"
+        value=""
+      />
+      <span
+        class="bp4-input-action"
+      />
+    </div>
+    <div
+      class="search-result"
+    >
+      No journal is found
+    </div>
+  </div>
+</DocumentFragment>
+`;
