@@ -113,6 +113,11 @@ textarea {
 @media (min-width: 420px) {
   .Editor {
     width: auto;
+    height: calc(100vh - 10em) !important;
+  }
+
+  .Journal .DraftEditor-root {
+    height: calc(100vh - 20em) !important;
   }
 }
 

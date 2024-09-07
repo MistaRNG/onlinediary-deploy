@@ -15,7 +15,7 @@ const Content: React.FC<ContentProps> = ({ disabledDays, minDate, value, date, d
 
   return (
     <div className="Journal">
-      <div className="calendar-container">
+      <div>
         <Search />
         <Calendar {...{ disabledDays, minDate, value, dates: parsedDates }} />
       </div>

@@ -64,7 +64,7 @@ export default (db: any) => {
     } catch (error) {
       next(error);
     }
-  });  
+  });
 
   /**
    * @swagger
@@ -95,6 +95,128 @@ export default (db: any) => {
     try {
       const comments = await getComments(journal_id);
       res.status(200).json(comments);
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  /**
+   * @swagger
+   * /comments/{comment_id}:
+   *   put:
+   *     summary: Update a comment
+   *     tags: [Comment Management]
+   *     parameters:
+   *       - in: path
+   *         name: comment_id
+   *         schema:
+   *           type: integer
+   *         required: true
+   *         description: The ID of the comment to update
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               content:
+   *                 type: string
+   *                 description: The new content of the comment
+   *                 example: "This is the updated comment content"
+   *     responses:
+   *       200:
+   *         description: The updated comment
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Comment'
+   *       400:
+   *         description: Bad request
+   *       404:
+   *         description: Comment not found or not authorized
+   */
+  router.put('/:comment_id', async (req: any, res: Response, next: NextFunction) => {
+    const { comment_id } = req.params;
+    const { content } = req.body;
+    const userId = req.session?.user_id;
+
+    if (!userId) {
+      return res.status(400).json({ error: 'User ID is required.' });
+    }
+
+    if (!content) {
+      return res.status(400).json({ error: 'Content is required.' });
+    }
+
+    try {
+      const query = `
+        UPDATE comments
+        SET content = $1, edited = true
+        WHERE id = $2 AND user_id = $3
+        RETURNING *;
+      `;
+      const values = [content, comment_id, userId];
+      const { rows } = await db.query(query, values);
+
+      if (rows.length === 0) {
+        return res.status(404).json({ error: 'Comment not found or not authorized.' });
+      }
+
+      res.status(200).json(rows[0]);
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  /**
+   * @swagger
+   * /comments/{comment_id}:
+   *   delete:
+   *     summary: Delete a comment
+   *     tags: [Comment Management]
+   *     parameters:
+   *       - in: path
+   *         name: comment_id
+   *         schema:
+   *           type: integer
+   *         required: true
+   *         description: The ID of the comment to delete
+   *     responses:
+   *       200:
+   *         description: The comment has been marked as deleted
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Comment'
+   *       400:
+   *         description: Bad request
+   *       404:
+   *         description: Comment not found or not authorized
+   */
+  router.delete('/:comment_id', async (req: any, res: Response, next: NextFunction) => {
+    const { comment_id } = req.params;
+    const userId = req.session?.user_id;
+
+    if (!userId) {
+      return res.status(400).json({ error: 'User ID is required.' });
+    }
+
+    try {
+      const query = `
+        UPDATE comments
+        SET deleted = true
+        WHERE id = $1 AND user_id = $2
+        RETURNING *;
+      `;
+      const values = [comment_id, userId];
+      const { rows } = await db.query(query, values);
+
+      if (rows.length === 0) {
+        return res.status(404).json({ error: 'Comment not found or not authorized.' });
+      }
+
+      res.status(200).json(rows[0]);
     } catch (error) {
       next(error);
     }

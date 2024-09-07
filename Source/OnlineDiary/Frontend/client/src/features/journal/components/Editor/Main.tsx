@@ -35,7 +35,7 @@ const Main: React.FC<MainProps> = ({
   const { darkMode } = useMode();
   const parsedDate = typeof date === 'string' ? new Date(date) : date;
   const [likes, setLikes] = useState<string[]>([]);
-  const [comments, setComments] = useState<{ username: string; content: string }[]>([]);
+  const [comments, setComments] = useState<{ username: string; content: string; deleted?: boolean; edited?: boolean; }[]>([]);
   const [journalId, setJournalId] = useState<number | null>(null);
   const [isLikesModalOpen, setIsLikesModalOpen] = useState(false);
   const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false);
@@ -236,7 +236,22 @@ const Main: React.FC<MainProps> = ({
             <ul style={{ paddingLeft: "1em" }}>
               {comments.map((comment, index) => (
                 <li key={index} style={{ marginBottom: "0.8em" }}>
-                  <strong>{comment.username}:</strong> {comment.content}
+                  <strong>{comment.username}: </strong> 
+                  {comment.deleted ? (
+                    <span style={{ fontStyle: "italic" }}>
+                      Comment was deleted by user
+                    </span>
+                  ) : (
+                    <>
+                      {comment.content}
+                      {comment.edited && (
+                        <span style={{ fontStyle: "italic", fontSize: "0.8em", color: "gray" }}>
+                          {" "}
+                          (edited)
+                        </span>
+                      )}
+                    </>
+                  )}
                 </li>
               ))}
             </ul>

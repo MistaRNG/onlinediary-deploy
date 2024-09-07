@@ -166,14 +166,23 @@
   color: #ccc;
 }
 
-.calendar-header {
+.calendar-container {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
+  flex-direction: column;
+  position: relative;
+  margin: 40px auto;
+  max-width: fit-content;
+}
+
+.calendar-header {
+  position: absolute;
+  top: -35px;
+  right: 0;
 }
 
 .today-button {
-  padding: 6px 12px;
+  padding: 7px 19px;
+  margin-bottom: 3px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -184,6 +193,11 @@
 
 .today-button:hover {
   background-color: #0056b3;
+}
+
+.react-datepicker {
+  width: 100%;
+  max-width: 100%;
 }
 
 .react-datepicker__day--selected-date {

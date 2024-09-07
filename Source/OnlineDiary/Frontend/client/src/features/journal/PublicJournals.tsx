@@ -11,13 +11,14 @@ import useMode from "common/hooks/useMode";
 import { useNavigate } from "react-router-dom";
 import SearchInput from "./components/Search/Input";
 import LogoutButton from "features/auth/LogoutButton";
+import useCurrentUser from "common/hooks/useCurrentUser";
 
 const PublicJournals: React.FC = () => {
   const { darkMode } = useMode();
   const dispatch: AppDispatch = useDispatch();
   const journals = useSelector((state: RootState) => state.journals.data);
   const navigate = useNavigate();
-
+  const { username } = useCurrentUser();
   const [isPasswordInputVisible, setIsPasswordInputVisible] = useState(false);
 
   useEffect(() => {
@@ -100,7 +101,7 @@ const PublicJournals: React.FC = () => {
     } catch (error) {
       console.error("Error liking/unliking:", error);
     }
-  };  
+  };
 
   const openJournalModal = (journal: any) => {
     const formattedDate = moment(journal.date).format("dddd, MMMM D, YYYY");
@@ -141,21 +142,37 @@ const PublicJournals: React.FC = () => {
         }
       );
   
-      setComments([...comments, response.data]);
+      setComments([...comments, { ...response.data, edited: false }]);
       setNewComment("");
     } catch (error) {
       console.error("Error posting comment:", error);
-      if (error.response) {
-        console.error("Response data:", error.response.data);
-        console.error("Response status:", error.response.status);
-        console.error("Response headers:", error.response.headers);
-      } else if (error.request) {
-        console.error("Request data:", error.request);
-      } else {
-        console.error("Error message:", error.message);
+    }
+  };
+
+  const handleEditComment = async (commentId: number, currentContent: string) => {
+    const newContent = prompt("Edit your comment:", currentContent);
+    if (newContent && newContent.trim() !== "") {
+      try {
+        await axios.put(`http://localhost:3002/api/comments/${commentId}`, {
+          content: newContent,
+        });
+        fetchComments(selectedJournal.id);
+      } catch (error) {
+        console.error("Error updating comment:", error);
       }
     }
-  };  
+  };
+
+  const handleDeleteComment = async (commentId: number) => {
+    if (window.confirm("Are you sure you want to delete this comment?")) {
+      try {
+        await axios.delete(`http://localhost:3002/api/comments/${commentId}`);
+        fetchComments(selectedJournal.id);
+      } catch (error) {
+        console.error("Error deleting comment:", error);
+      }
+    }
+  };
 
   useEffect(() => {
     Object.values(journals).forEach((journal: any) => {
@@ -192,7 +209,7 @@ const PublicJournals: React.FC = () => {
                 position: "fixed",
                 filter: isModalOpen ? "brightness(0.5)" : "none",
                 margin: "70px 0 0 1px",
-                zIndex: 1000,
+                zIndex: 1,
                 display: "block",
               }}
             >
@@ -221,7 +238,7 @@ const PublicJournals: React.FC = () => {
                 top: "30px",
                 left: "50%",
                 transform: "translateX(-50%)",
-                zIndex: 999,
+                zIndex: 1,
               }}
             >
               Public entries
@@ -288,7 +305,7 @@ const PublicJournals: React.FC = () => {
         title={null}
         className={`modal-container ${darkMode ? "dark" : "bright"}`}
         style={{
-          zIndex: 1002,
+          zIndex: 600,
           position: "fixed",
           top: "50%",
           left: "50%",
@@ -297,6 +314,10 @@ const PublicJournals: React.FC = () => {
           backgroundColor: darkMode ? "#1c1c1e" : "#ffffff",
           color: darkMode ? "#e5e5ea" : "#000000",
           border: "1px solid #333",
+          maxWidth: "90vw",
+          maxHeight: "90vh",
+          overflowY: "auto",
+          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)"
         }}
       >
         <div
@@ -338,6 +359,8 @@ const PublicJournals: React.FC = () => {
               padding: "10px",
               borderRadius: "8px",
               marginBottom: "1.5em",
+              maxHeight: "200px",
+              overflowY: "auto"
             }}
           >
             <p style={{ marginBottom: "0.5em", fontWeight: "bold" }}>
@@ -363,9 +386,36 @@ const PublicJournals: React.FC = () => {
             <div className="comments-container">
               {comments.length > 0 ? (
                 comments.map((comment: any, index: number) => (
-                  <p key={index} style={{ marginBottom: "0.6em" }}>
-                    <strong>{comment.username}:</strong> {comment.content}
-                  </p>
+                  <div key={index} style={{ marginBottom: "0.6em" }}>
+                    <strong>{comment.username}:</strong>{" "}
+                    {comment.deleted ? (
+                      <span style={{ fontStyle: "italic" }}>
+                        Comment was deleted by user
+                      </span>
+                    ) : (
+                      <>
+                        {comment.content}
+                        {comment.edited && (
+                          <span style={{ fontStyle: "italic", fontSize: "0.8em", color: "gray" }}>
+                            {" "}
+                            (edited)
+                          </span>
+                        )}
+                      </>
+                    )}
+                    {comment.username === username && !comment.deleted && (
+                      <span style={{ fontSize: "0.8em", color: "gray" }}>
+                        <br />
+                        <a href="#" onClick={() => handleEditComment(comment.id, comment.content)}>
+                          Edit
+                        </a>{" "}
+                        |{" "}
+                        <a href="#" onClick={() => handleDeleteComment(comment.id)}>
+                          Delete
+                        </a>
+                      </span>
+                    )}
+                  </div>
                 ))
               ) : (
                 <p>No comments yet.</p>
@@ -404,9 +454,9 @@ const PublicJournals: React.FC = () => {
                 handleLike(selectedJournal.id);
               }
             }}
-            className={`like-button ${
-              darkMode ? "dark-mode" : "light-mode"
-            } ${userLiked[selectedJournal?.id] ? "liked" : ""}`}
+            className={`like-button ${darkMode ? "dark-mode" : "light-mode"} ${
+              userLiked[selectedJournal?.id] ? "liked" : ""
+            }`}
           >
             Like ({likes[selectedJournal?.id] || 0})
           </Button>
