@@ -41,4 +41,4 @@ const combinedReportPath = path.resolve('../../combined-test-report.html');
 
 fs.writeFileSync(combinedReportPath, combinedReport, 'utf-8');
 
-console.log(`Kombinierter Testbericht erstellt: ${combinedReportPath}`);
+console.log(`Combined test report created: ${combinedReportPath}`);
