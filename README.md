@@ -87,9 +87,20 @@ Once the application is running, you can access it via the frontend at [http://l
 - **Error Handling**: If something goes wrong, you’ll see a friendly error message guiding you back to the main flow.
 - **Account Management**: Easily manage your profile settings and log out with a simple click.
 - **Responsive Design**: The application is fully responsive and optimized for all devices, including desktops, tablets, and mobile phones, providing a seamless experience no matter where you are.
+- **API Documentation**: Access to the full API documentation via SwaggerUI for developers who want to test and implement the available endpoints.
+
 
 ### Tips for Use:
 
+- **Test Accounts**: For testing purposes, 2 accounts were created which can be accessed using the following login details:
+```
+USERNAME: Test
+PASSWORD: hallo
+```
+```
+USERNAME: Testo
+PASSWORD: 1
+```
 - **Editing Entries**: Click on any date in the calendar to view or edit entries for that day.
 - **Security**: For your security, the application will lock itself after a period of inactivity. Simply log back in to continue where you left off.
 

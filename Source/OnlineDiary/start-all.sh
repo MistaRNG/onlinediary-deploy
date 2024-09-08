@@ -16,19 +16,18 @@ if [ ! -f ".env" ]; then
 fi
 
 echo "Stopping and removing existing Docker containers..."
-docker-compose down
+docker-compose down || { echo "Failed to stop containers. Exiting..."; exit 1; }
+
+echo "Cleaning up Docker environment..."
+docker system prune -f
+docker volume prune -f
 
 echo "Building and starting Docker containers..."
-docker-compose up --build -d
+docker-compose up --build -d || { echo "Failed to build and start containers. Exiting..."; exit 1; }
 
-if [ $? -eq 0 ]; then
-  echo "All services were started successfully."
-else
-  echo "An error occurred while starting the services."
-  exit 1
-fi
+echo "All services were started successfully."
 
 echo "Running containers:"
 docker-compose ps
 
-echo "The application is now running. You can access the frontend at http://localhost:${FRONTEND_PORT}."
+echo "The application is now running. You can access the frontend at http://localhost:3000"
