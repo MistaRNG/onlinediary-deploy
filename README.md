@@ -9,7 +9,11 @@ A full-stack journaling web application utilizing microservices architecture wit
 - [Dependencies](#dependencies)
 - [Environment Setup](#environment-setup)
 - [Starting the Application](#starting-the-application)
-- [Credits](#credits)
+- [Using the Application](#using-the-application)
+- [Accessing API Documentation](#accessing-api-documentation)
+- [Running Tests](#running-tests)
+- [Dependencies](#dependencies)
+
 
 ## Overview
 
@@ -92,7 +96,7 @@ Once the application is running, you can access it via the frontend at [http://l
 Enjoy journaling with Onlinediary!
 
 
-### Accessing API Documentation
+## Accessing API Documentation
 
 For developers, the full API documentation can be accessed via SwaggerUI at [http://localhost:4000/api-docs](http://localhost:4000/api-docs). This interface provides a detailed overview of available endpoints, their parameters, and allows for testing directly in the browser.
 
@@ -118,7 +122,6 @@ In this case, a combined-test-report.html is created at the end, which can be ca
 To run all backend tests use:
 
 ```bash
-Code kopieren
 npm run test:frontend
 ```
 
@@ -128,7 +131,6 @@ This will execute tests for all backend services, ensuring each service operates
 Backend tests are separated by each microservice. To run all backend tests together, use:
 
 ```bash
-Code kopieren
 npm run test:backend
 ```
 
@@ -141,7 +143,6 @@ You can also run tests for each backend service individually. Here are the comma
 Service-tests:
 
 ```bash
-Code kopieren
 npm run test:SERVICE_NAME
 ```
 
