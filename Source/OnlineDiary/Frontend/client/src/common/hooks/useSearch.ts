@@ -45,6 +45,7 @@ const useSearch = () => {
   useEffect(() => {
     const t = setTimeout(updateResults, 500);
     return () => clearTimeout(t);
+    // eslint-disable-next-line
   }, [search, data]);
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value);

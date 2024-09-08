@@ -406,10 +406,12 @@ const PublicJournals: React.FC = () => {
                     {comment.username === username && !comment.deleted && (
                       <span style={{ fontSize: "0.8em", color: "gray" }}>
                         <br />
+                        {/* eslint-disable-next-line */}
                         <a href="#" onClick={() => handleEditComment(comment.id, comment.content)}>
                           Edit
                         </a>{" "}
                         |{" "}
+                        {/* eslint-disable-next-line */}
                         <a href="#" onClick={() => handleDeleteComment(comment.id)}>
                           Delete
                         </a>

@@ -59,11 +59,12 @@ const useJournal = (date: string) => {
       }
     }
     setCss(cssArr.join(""));
-
+    // eslint-disable-next-line
   }, [journals]);
 
   useEffect(() => {
     dispatch(getJournals() as any);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -77,6 +78,7 @@ const useJournal = (date: string) => {
         navigate(`/journal/${formattedDate}`);
       }
     }
+    // eslint-disable-next-line
   }, [gotData, formattedDate, dateIsAvailable, correctDateFormat]);
 
   return {

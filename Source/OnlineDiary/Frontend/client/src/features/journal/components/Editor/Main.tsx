@@ -1,5 +1,5 @@
 import "./Editor.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Editor, EditorState } from "draft-js";
 import Title from "./Title";
 import DateComponent from "./Date";
@@ -33,7 +33,7 @@ const Main: React.FC<MainProps> = ({
   toggleIsPublic,
 }) => {
   const { darkMode } = useMode();
-  const parsedDate = typeof date === 'string' ? new Date(date) : date;
+  const parsedDate = useMemo(() => (typeof date === 'string' ? new Date(date) : date), [date]);
   const [likes, setLikes] = useState<string[]>([]);
   const [comments, setComments] = useState<{ username: string; content: string; deleted?: boolean; edited?: boolean; }[]>([]);
   const [journalId, setJournalId] = useState<number | null>(null);

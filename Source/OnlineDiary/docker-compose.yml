@@ -93,7 +93,7 @@ services:
   gateway-service:
     build: ./Backend/server/webservices/gateway-service
     ports:
-      - "4000:4000"
+      - "${GATEWAY_SERVICE_PORT}:${GATEWAY_SERVICE_PORT}"
     environment:
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
@@ -101,6 +101,14 @@ services:
       DB_PASS: ${DB_PASS}
       DB_NAME: ${DB_NAME}
       SECRET: ${SECRET}
+
+  frontend:
+    build: ./Frontend/client
+    environment:
+      REACT_APP_API_URL: http://localhost:4000
+    ports:
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+    restart: always
 
 volumes:
   postgres_data:

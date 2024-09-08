@@ -38,22 +38,6 @@ const initState: JournalState = {
   prevDates: [],
 };
 
-interface JournalStateForDashboard {
-  data: Record<string, JournalDataForDashboard>;
-  gotData: boolean;
-  saved: boolean | null;
-  editCount: number;
-  prevDates: string[];
-}
-
-const initStateForDashboard: JournalStateForDashboard = {
-  data: {},
-  gotData: false,
-  saved: null,
-  editCount: 0,
-  prevDates: [],
-};
-
 const SAVE_JOURNAL = "journal/SAVE_JOURNAL" as const;
 const GET_JOURNALS = "journal/GET_JOURNALS" as const;
 const DELETE_JOURNAL = "journal/DELETE_JOURNAL" as const;

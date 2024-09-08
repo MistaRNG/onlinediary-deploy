@@ -532,3 +532,8 @@ ALTER TABLE ONLY public.comments
 -- PostgreSQL database dump complete
 --
 
+ADD COLUMN edited BOOLEAN DEFAULT FALSE;
+ALTER TABLE
+
+ALTER TABLE comments
+ADD COLUMN deleted BOOLEAN DEFAULT FALSE;

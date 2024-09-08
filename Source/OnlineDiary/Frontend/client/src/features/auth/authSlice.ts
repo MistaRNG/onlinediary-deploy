@@ -49,7 +49,7 @@ export const logIn = (id, password, fn, successFn) => {
 export const logout = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post("http://localhost:3004/api/users/logout");
+      await axios.post("http://localhost:3004/api/users/logout");
       dispatch({ type: RECEIVE_USER, payload: { username: null } });
     } catch (e) {
       const errorMessage = e.response?.data?.message || "Error logging out";

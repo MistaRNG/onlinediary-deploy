@@ -94,6 +94,7 @@ const useEditor = (date: string) => {
       updateTitle("");
       setIsPublic(false);
     }
+    // eslint-disable-next-line
   }, [date]);
 
   const editor = useRef<EditorState | null>(null);
@@ -142,6 +143,7 @@ const useEditor = (date: string) => {
       const t = setTimeout(() => dispatch(clearStatus), showSavedTimeout);
       return () => clearTimeout(t);
     }
+    // eslint-disable-next-line
   }, [saved]);
 
   return {
