@@ -1,93 +1,171 @@
 # Onlinediary
 
+A full-stack journaling web application utilizing microservices architecture with Node.js, Express, PostgreSQL, React, and Docker. The application provides a comprehensive journaling platform integrated with user authentication, comments, likes, and mode switching features.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+- [Dependencies](#dependencies)
+- [Environment Setup](#environment-setup)
+- [Starting the Application](#starting-the-application)
+- [Credits](#credits)
+
+## Overview
+
+Onlinediary is a microservices-based web application for journaling, featuring multiple backend services (auth, users, journals, comments, likes, mode, and gateway) running within Docker containers and interacting with a central PostgreSQL database. The frontend is built using React and Redux, providing a dynamic and responsive user interface.
+
+## Getting Started
+
+1. **Clone or Download the Repository**: Clone this repository onto your local device.
+
+2. **Install Docker and Docker Compose**: Ensure that Docker and Docker Compose are installed on your system. You can verify the installation with:
+
+   ```bash
+   docker --version
+   docker-compose --version
+   ```
+
+   If not installed, refer to the [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) documentation for installation instructions.
+
+3. **Environment Files**: Ensure that the required `.env` files are present in the root and service directories. These files must contain the correct configuration for database access, secret keys, and service ports.
+
+4. **Initialize the Database**: The PostgreSQL database is automatically initialized using the `backup.sql` script provided in the `db` service configuration. The database schema and data will be set up when the Docker container starts. The database is already filled with some data for testing purposes.
+
+## Environment Setup
+
+### Main .env File
+
+Ensure that the main `.env` file in the root directory contains the contains the required values.
+
+Each microservice may also have its specific `.env` file with relevant environment variables tailored for that service.
 
 
-## Getting started
+*Note: To make testing as easy as possible, the .env was left in the repo. After testing and evaluation have been completed, it can be removed.*
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Starting the Application
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+1. **Run the start-all.sh Script**: Use the `start-all.sh` script to build and start the application. This script will handle the creation and startup of all Docker containers. *(The shell script is here: onlinediary/Source/OnlineDiary/start-all.sh)*
 
-## Add your files
+   ```bash
+   ./start-all.sh
+   ```
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+2. **Access the Application**:
 
+   - **Frontend**: [http://localhost:3000](http://localhost:3000)
+   - **API Gateway**: [http://localhost:4000/api-docs](http://localhost:4000/api-docs)
+
+   The script will display the status of all running containers upon successful startup.
+
+3. **Stopping the Application**:
+
+   To stop and remove all running containers, you can use the following command:
+
+    ```bash
+   docker-compose down
+   ```
+
+
+## Using the Application
+
+Once the application is running, you can access it via the frontend at [http://localhost:3000](http://localhost:3000).
+
+### Key Features:
+
+- **Authentication**: You can log in securely using OAuth with GitLab, which is the preferred method for accessing the application. *(Logging in without GitLab is for emergency or testing purposes only. GitLab is more secure due to OAuth2.)*
+
+- **Journaling**: Start writing your journal entries with various formatting options, such as bold, italic, and lists. Your changes are saved automatically after a few seconds of inactivity. You can make your entry public via a switch so that other users can see it, like it and comment on it. It will not be visible to others who made the entry. The "Entries from others" button takes you to a dashboard where you can see all public entries.
+
+- **Search**: Use the search bar to find past entries quickly and efficiently.
+- **Comments and Likes**: Interact with journal entries by commenting and liking posts. Users can edit and delete their own comments directly within the comment section by clicking the link belew their comment. A prompt appears, allowing the user to modify the comment text. 
+- **Mode Switching**: Toggle between light and dark modes based on your preference.
+- **Error Handling**: If something goes wrong, you’ll see a friendly error message guiding you back to the main flow.
+- **Account Management**: Easily manage your profile settings and log out with a simple click.
+- **Responsive Design**: The application is fully responsive and optimized for all devices, including desktops, tablets, and mobile phones, providing a seamless experience no matter where you are.
+
+### Tips for Use:
+
+- **Editing Entries**: Click on any date in the calendar to view or edit entries for that day.
+- **Security**: For your security, the application will lock itself after a period of inactivity. Simply log back in to continue where you left off.
+
+Enjoy journaling with Onlinediary!
+
+
+### Accessing API Documentation
+
+For developers, the full API documentation can be accessed via SwaggerUI at [http://localhost:4000/api-docs](http://localhost:4000/api-docs). This interface provides a detailed overview of available endpoints, their parameters, and allows for testing directly in the browser.
+
+## Running Tests
+
+To ensure the application runs smoothly and meets all quality standards, you can execute tests for both the frontend and backend services. Here's how you can run all the tests:
+
+### Running All Tests
+
+You can run all tests from the project root directory (Source/OnlineDiary) using the following command:
+
+```bash
+npm test
 ```
-cd existing_repo
-git remote add origin https://gitlab.dit.htwk-leipzig.de/web-engineering-2024-onlinediary/onlinediary.git
-git branch -M main
-git push -uf origin main
+
+This command will trigger all frontend and backend tests sequentially.
+
+In this case, a combined-test-report.html is created at the end, which can be called up in the browser (copy the link from the console into the browser and call it up). All test results can then be viewed clearly in the browser.
+
+### Running Tests seperatly
+
+**Running Backend Tests**
+To run all backend tests use:
+
+```bash
+Code kopieren
+npm run test:frontend
 ```
 
-## Integrate with your tools
+This will execute tests for all backend services, ensuring each service operates correctly within its expected parameters.
 
-- [ ] [Set up project integrations](https://gitlab.dit.htwk-leipzig.de/web-engineering-2024-onlinediary/onlinediary/-/settings/integrations)
+**Running Backend Tests**
+Backend tests are separated by each microservice. To run all backend tests together, use:
 
-## Collaborate with your team
+```bash
+Code kopieren
+npm run test:backend
+```
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+This will execute tests for all backend services, ensuring each service operates correctly within its expected parameters.
 
-## Test and Deploy
+**Running Tests for Individual Services**
 
-Use the built-in continuous integration in GitLab.
+You can also run tests for each backend service individually. Here are the commands for each:
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Service-tests:
 
-***
+```bash
+Code kopieren
+npm run test:SERVICE_NAME
+```
 
-# Editing this README
+Set SERVICE_NAME to one of the following: auth, comments, gateway, journals, likes, mode, users
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
 
-## Suggestions for a good README
+## Dependencies
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+### Client
 
-## Name
-Choose a self-explaining name for your project.
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [Material-UI](https://mui.com/)
+- [Axios](https://axios-http.com/)
+- [Moment.js](https://momentjs.com/)
+- [Draft.js](https://draftjs.org/)
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+### Server
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [bcrypt.js](https://github.com/dcodeIO/bcrypt.js)
+- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
+- [dotenv](https://github.com/motdotla/dotenv)
+- [Jest](https://jestjs.io/)
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
