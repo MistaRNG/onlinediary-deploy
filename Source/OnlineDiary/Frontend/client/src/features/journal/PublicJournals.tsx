@@ -175,14 +175,12 @@ const PublicJournals: React.FC = () => {
   };
 
   useEffect(() => {
-    Object.values(journals).forEach((journal: any) => {
-      if (journal.id) {
+    Object.values(journals)
+      .filter((journal: any) => journal.id)
+      .forEach((journal: any) => {
         fetchLikes(journal.id);
-      } else {
-        console.error("Journal ID is undefined:", journal);
-      }
-    });
-  }, [journals]);
+      });
+  }, [journals]);  
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
