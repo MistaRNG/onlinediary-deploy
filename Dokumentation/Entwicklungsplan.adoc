@@ -78,6 +78,6 @@
 {empty} +
 {empty} +
  
-=== Docker-Integration
+=== Docker-Integration  [✓]
 * Ziel: Containerisierung der Anwendung mit Docker, um eine einfache Bereitstellung und Skalierbarkeit zu ermöglichen. Erstellung von Dockerfiles für Backend, Frontend und Datenbank.
-* Zeitplan: Umsetzung geplant bis zum Ende des Projekts.
+* Zeitplan: Umsetzung geplant bis zum Ende des Projekts. (*erledigt am 08.09.2024*)
