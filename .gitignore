@@ -170,3 +170,8 @@ yarn-error.log*
 
 **/.env
 !Source/OnlineDiary/Backend/server/development.env
+
+# Exclude test reports
+**/test-report.html
+
+combined-test-report.html

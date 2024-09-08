@@ -10,6 +10,18 @@ const config: Config = {
     '^.+\\.(ts|tsx)$': ['ts-jest', { tsconfig: 'tsconfig.json', useESM: true }],
   },
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
+  reporters: [
+    'default',
+    [
+      'jest-html-reporter',
+      {
+        pageTitle: 'Mode Test Report',
+        outputPath: './test-report-mode-service.html',
+        includeFailureMsg: true,
+        theme: 'lightTheme',
+      },
+    ],
+  ],
 };
 
 export default config;

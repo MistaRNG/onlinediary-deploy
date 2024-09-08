@@ -75,7 +75,7 @@ exports[`PublicJournals Component Snapshot Test renders correctly 1`] = `
     >
       <div
         class="header-container"
-        style="position: fixed; filter: none; margin: 70px 0px 0px 1px; z-index: 1000; display: block;"
+        style="position: fixed; filter: none; margin: 70px 0px 0px 1px; z-index: 1; display: block;"
       >
         <button
           class="bp4-button back-to-editor-button"
@@ -122,7 +122,7 @@ exports[`PublicJournals Component Snapshot Test renders correctly 1`] = `
         </div>
       </div>
       <h2
-        style="text-align: center; width: 100%; margin-top: 20px; position: fixed; top: 30px; left: 50%; transform: translateX(-50%); z-index: 999;"
+        style="text-align: center; width: 100%; margin-top: 20px; position: fixed; top: 30px; left: 50%; transform: translateX(-50%); z-index: 1;"
       >
         Public entries
       </h2>

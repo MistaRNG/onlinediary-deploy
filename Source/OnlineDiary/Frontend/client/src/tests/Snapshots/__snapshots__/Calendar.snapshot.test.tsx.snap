@@ -164,22 +164,21 @@ exports[`Calendar Component Snapshot Tests should render the Calendar component 
                 5
               </div>
               <div
-                aria-current="date"
-                aria-disabled="false"
-                aria-label="Choose Friday, September 6th, 2024"
-                aria-selected="true"
-                class="react-datepicker__day  react-datepicker__day--highlighted react-datepicker__day--today react-datepicker__day--selected-date react-datepicker__day--006 react-datepicker__day--selected react-datepicker__day--today"
+                aria-disabled="true"
+                aria-label="Not available Friday, September 6th, 2024"
+                aria-selected="false"
+                class="react-datepicker__day react-datepicker__day--006 react-datepicker__day--disabled"
                 role="option"
-                tabindex="0"
+                tabindex="-1"
                 title=""
               >
                 6
               </div>
               <div
-                aria-disabled="false"
-                aria-label="Choose Saturday, September 7th, 2024"
+                aria-disabled="true"
+                aria-label="Not available Saturday, September 7th, 2024"
                 aria-selected="false"
-                class="react-datepicker__day react-datepicker__day--007 react-datepicker__day--weekend"
+                class="react-datepicker__day react-datepicker__day--007 react-datepicker__day--disabled react-datepicker__day--weekend"
                 role="option"
                 tabindex="-1"
                 title=""
@@ -188,15 +187,16 @@ exports[`Calendar Component Snapshot Tests should render the Calendar component 
               </div>
             </div>
             <div
-              class="react-datepicker__week"
+              class="react-datepicker__week react-datepicker__week--selected"
             >
               <div
+                aria-current="date"
                 aria-disabled="false"
                 aria-label="Choose Sunday, September 8th, 2024"
-                aria-selected="false"
-                class="react-datepicker__day react-datepicker__day--008 react-datepicker__day--weekend"
+                aria-selected="true"
+                class="react-datepicker__day  react-datepicker__day--highlighted react-datepicker__day--today react-datepicker__day--selected-date react-datepicker__day--008 react-datepicker__day--selected react-datepicker__day--today react-datepicker__day--weekend"
                 role="option"
-                tabindex="-1"
+                tabindex="0"
                 title=""
               >
                 8

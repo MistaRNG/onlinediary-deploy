@@ -10,15 +10,25 @@ const config: Config = {
     '^.+\\.tsx?$': ['ts-jest', { tsconfig: 'tsconfig.json', useESM: true }],
     '^.+\\.jsx?$': ['ts-jest', { tsconfig: 'tsconfig.json', useESM: true }],
   },
-  transformIgnorePatterns: [
-    '/node_modules/(?!@mui|cheerio|enzyme-to-json)',
-  ],
+  transformIgnorePatterns: ['/node_modules/(?!@mui|cheerio|enzyme-to-json)'],
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   moduleNameMapper: {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
     '^features/(.*)$': '<rootDir>/src/features/$1',
     '^common/(.*)$': '<rootDir>/src/common/$1',
   },
+  reporters: [
+    'default',
+    [
+      'jest-html-reporter',
+      {
+        pageTitle: 'Frontend Test Report',
+        outputPath: './test-report-frontend.html',
+        includeFailureMsg: true,
+        theme: 'lightTheme',
+      },
+    ],
+  ],
 };
 
 export default config;
