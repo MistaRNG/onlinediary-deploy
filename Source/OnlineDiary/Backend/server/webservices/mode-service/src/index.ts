@@ -23,8 +23,14 @@ const pool = new Pool({
 
 const PgSessionStore = pgSession(session);
 
-app.get('/api-docs-json', (req, res) => res.json(swaggerSpec));
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  })
+);
+
+app.use(express.json());
 
 app.use(
   session({
@@ -45,14 +51,8 @@ app.use(
   })
 );
 
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-    credentials: true,
-  })
-);
-
-app.use(express.json());
+app.get('/api-docs-json', (req, res) => res.json(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use('/api/mode', modeRouter());
 

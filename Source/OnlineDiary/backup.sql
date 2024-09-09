@@ -532,8 +532,28 @@ ALTER TABLE ONLY public.comments
 -- PostgreSQL database dump complete
 --
 
+ALTER TABLE ONLY public.comments
 ADD COLUMN edited BOOLEAN DEFAULT FALSE;
-ALTER TABLE
 
-ALTER TABLE comments
+ALTER TABLE ONLY public.comments
 ADD COLUMN deleted BOOLEAN DEFAULT FALSE;
+
+--
+-- TOC entry X (class 1259 OID XXXXX)
+-- Name: sessions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.sessions (
+    sid VARCHAR NOT NULL PRIMARY KEY,
+    sess JSON NOT NULL,
+    expire TIMESTAMP(6) WITHOUT TIME ZONE NOT NULL
+);
+
+ALTER TABLE public.sessions OWNER TO postgres;
+
+--
+-- TOC entry X (class 1259 OID XXXXX)
+-- Name: IDX_session_expire; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "IDX_session_expire" ON public.sessions(expire);
