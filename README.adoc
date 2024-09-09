@@ -190,12 +190,16 @@ Set SERVICE_NAME to one of the following: auth, comments, gateway, journals, lik
 .Dark-Editor
 image::Documentation/Pictures/1_Onlinediary.png[Dark-Editor, width=600, height=400, align=center]
 
+image::Documentation/Pictures/2_W_Onlinediary.png[White-Editor, width=600, height=400, align=center]
 
-![Dark-Editor](./1_Onlinediary.png)
-![White-Editor](./1_W_Onlinediary.png)
-![Dark-Dashboard](./3_Dashboard.png)
-![White-Dashboard](./3_W_Dashboard.png)
-![Journal-Card](./4_Modal.png)
-![Login](./5_Login.png)
-![Tablet-View](./6_Tablet.png)
-![Smartphone-View](./7_Smartphone.png)
+image::Documentation/Pictures/3_Dashboard.png[Dark-Dashboard, width=600, height=400, align=center]
+
+image::Documentation/Pictures/3_W_Dashboard.png[White-Dashboard, width=600, height=400, align=center]
+
+image::Documentation/Pictures/4_Modal.png[Journal-Card, width=600, height=400, align=center]
+
+image::Documentation/Pictures/5_Login.png[Login, width=600, height=400, align=center]
+
+image::Documentation/Pictures/6_Tablet.png[Tablet-View, width=600, height=400, align=center]
+
+image::Documentation/Pictures/7_Smartphone.png[Smartphone-View, width=600, height=400, align=center]
