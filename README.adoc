@@ -4,21 +4,22 @@ A full-stack journaling web application utilizing microservices architecture wit
 
 ## Table of Contents
 
-* link:#overview[Overview]
-* link:#getting-started[_Getting Started_]
-* link:#environment-setup[*Environment Setup*]
-* link:#starting-the-application[Starting the Application]
-* link:#using-the-application[Using the Application]
-* link:#accessing-api-documentation[Accessing API Documentation]
-* link:#running-tests[Running Tests]
-* link:#dependencies[Dependencies]
-* link:#galery[Galery]
-
+* <<overview>>
+* <<getting-started>>
+* <<environment-setup>>
+* <<starting-the-application>>
+* <<using-the-application>>
+* <<accessing-api-documentation>>
+* <<running-tests>>
+* <<dependencies>>
+* <<galery>>
 
 
 ## Overview
 
 Onlinediary is a microservices-based web application for journaling, featuring multiple backend services (auth, users, journals, comments, likes, mode, and gateway) running within Docker containers and interacting with a central PostgreSQL database. The frontend is built using React and Redux, providing a dynamic and responsive user interface.
+
+image::Documentation/Pictures/1_W_B_Onlinediary.png[Light-Editor, width=90%, height=400, align=center]
 
 ## Getting Started
 
