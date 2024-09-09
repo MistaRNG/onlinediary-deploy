@@ -12,6 +12,11 @@ const initState: ModeState = true;
 
 type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, AnyAction>;
 
+/**
+ * Toggles the application's dark mode state by making a request to the backend and updating the Redux state accordingly.
+ * 
+ * @returns {AppThunk} A thunk action that toggles the dark mode state.
+ */
 export const toggleMode = (): AppThunk => {
   return async (dispatch, getState) => {
     try {
@@ -25,6 +30,11 @@ export const toggleMode = (): AppThunk => {
   };
 };
 
+/**
+ * Fetches the current mode state (dark or light) from the backend and updates the Redux state if necessary.
+ * 
+ * @returns {AppThunk} A thunk action that fetches the current mode state.
+ */
 export const getMode = (): AppThunk => {
   return async (dispatch, getState) => {
     try {
@@ -38,6 +48,13 @@ export const getMode = (): AppThunk => {
   };
 };
 
+/**
+ * A reducer that manages the state of the application's mode (dark or light).
+ * 
+ * @param {ModeState} state - The current state of the mode.
+ * @param {AnyAction} action - The dispatched action.
+ * @returns {ModeState} The updated state based on the action type.
+ */
 const reducer = (state: ModeState = initState, action: AnyAction): ModeState => {
   switch (action.type) {
     case TOGGLE_MODE:

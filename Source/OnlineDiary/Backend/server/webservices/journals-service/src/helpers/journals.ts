@@ -11,10 +11,23 @@ interface DB {
   query: (queryText: string, values?: any[]) => Promise<{ rows: any[] }>;
 }
 
+/**
+ * Generates query functions for interacting with the journals database.
+ * 
+ * @param db - The database connection interface.
+ * @returns An object containing methods to interact with journal data.
+ */
 const queryGenerator = (db: DB) => {
+
+  /**
+   * Retrieves all journals for a specific user, ordered by date.
+   * 
+   * @param id - The user ID to filter journals by.
+   * @returns A promise that resolves to an array of the user's journal entries.
+   * @throws Will throw an error if the database query fails.
+   */
   const getJournals = async (id: number): Promise<JournalEntry[]> => {
     const values = [id];
-
     const queryString = `
       SELECT * FROM journals
       WHERE user_id = $1
@@ -32,6 +45,12 @@ const queryGenerator = (db: DB) => {
     }
   };
 
+  /**
+   * Retrieves all public journals, ordered by date in descending order.
+   * 
+   * @returns A promise that resolves to an array of public journal entries.
+   * @throws Will throw an error if the database query fails.
+   */
   const getPublicJournals = async (): Promise<JournalEntry[]> => {
     const queryString = `
       SELECT * FROM journals
@@ -50,6 +69,17 @@ const queryGenerator = (db: DB) => {
     }
   };
 
+  /**
+   * Creates or updates a journal entry in the database.
+   * 
+   * @param content - The content of the journal.
+   * @param id - The user ID associated with the journal.
+   * @param date - The date of the journal entry.
+   * @param title - The title of the journal.
+   * @param is_public - A boolean indicating if the journal is public.
+   * @returns A promise that resolves to the created or updated journal entry.
+   * @throws Will throw an error if the database operation fails or if the content format is invalid.
+   */
   const postJournal = async (
     content: any,
     id: number,
@@ -99,9 +129,16 @@ const queryGenerator = (db: DB) => {
     }
   };
 
+  /**
+   * Deletes a journal entry for a specific user and date.
+   * 
+   * @param id - The user ID associated with the journal.
+   * @param date - The date of the journal entry to delete.
+   * @returns A promise that resolves when the journal is deleted.
+   * @throws Will throw an error if the database query fails.
+   */
   const deleteJournal = async (id: number, date: string): Promise<void> => {
     const values = [id, date];
-
     const queryDeleteString = `
       DELETE FROM journals
       WHERE user_id = $1 AND date = $2

@@ -3,6 +3,18 @@ import { useSelector } from "react-redux";
 import { compareDate } from "common/helpers";
 import { RootState } from "app/store";
 
+/**
+ * Custom hook for managing search functionality within journal entries.
+ * 
+ * This hook allows for searching through journal entries by title, content, or date. 
+ * The search results are dynamically updated as the user types, with a slight delay to optimize performance.
+ * 
+ * @returns {Object} - An object containing:
+ * - `search`: The current search query string.
+ * - `changeHandler`: A function to handle input changes for the search query.
+ * - `cancel`: A function to clear the search input.
+ * - `results`: An array of search results with id, date, and title properties.
+ */
 const useSearch = () => {
   const [search, setSearch] = useState<string>("");
   const [results, setResults] = useState<{ id: string; date: string; title: string }[]>([]);

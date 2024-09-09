@@ -8,6 +8,15 @@ const getMonth = (date: string | Date): string => {
   return moment(date).format("YYYY-MM");
 };
 
+/**
+ * Finds the first available date within a list of dates that matches the month of the given date.
+ *
+ * This function is useful for locating a date within a specific month when iterating over available dates.
+ *
+ * @param {string | Date} date - The date to find a matching month for.
+ * @param {string[]} dates - An array of date strings to search through.
+ * @returns {string | undefined} - The first matching date string, or undefined if no match is found.
+ */
 export const getAvailableDate = (date: string | Date, dates: string[]): string | undefined => {
   const month = getMonth(date);
   return dates.find((d) => d.includes(month));
@@ -22,6 +31,13 @@ export const getAlarm = (): string => {
   return convertTimeToStr(alarm);
 };
 
+/**
+ * Compares two dates and returns true if the first date is less than or equal to the second.
+ *
+ * @param {string | Date} date1 - The first date to compare.
+ * @param {string | Date} date2 - The second date to compare.
+ * @returns {boolean} - True if date1 is less than or equal to date2, otherwise false.
+ */
 export const compareDate = (date1: string | Date, date2: string | Date): boolean => {
   return moment(date1).toDate() <= moment(date2).toDate();
 };
@@ -73,6 +89,16 @@ export interface JournalData {
   isPublic: boolean;
 }
 
+/**
+ * Formats an array of journal entries into a structured record and list of dates.
+ *
+ * Converts raw data from journal entries into a more manageable format for the application,
+ * extracting and formatting fields such as ID, date, content, title, and public status.
+ *
+ * @param {Array} data - Array of journal entries with fields id, date, content, title, and optional is_public.
+ * @returns {[Record<string, JournalData>, string[]]} - A tuple containing a record of formatted journal data
+ * and a list of formatted dates.
+ */
 export const formatJournals = (
   data: { id: number; date: string; content: RawDraftContentState; title: string; is_public?: boolean }[]
 ): [Record<string, JournalData>, string[]] => {

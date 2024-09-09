@@ -18,6 +18,24 @@ import { RootState } from "app/store";
 
 type JournalData = Record<string, any>;
 
+/**
+ * Custom hook for managing journal-related data and navigation.
+ * 
+ * This hook handles loading journal entries, managing dates, and navigating to available 
+ * journal entries. It also manages styles and checks for valid journal dates.
+ * 
+ * @param {string} date - The current date string to be used in the journal context.
+ * 
+ * @returns {Object} - An object containing:
+ * - `gotData`: Boolean indicating if the journal data has been successfully loaded.
+ * - `validDate`: Boolean indicating if the current date is a valid journal date.
+ * - `disabledDays`: A function that checks if a date is disabled for journal entries.
+ * - `minDate`: The earliest available date in the journal data.
+ * - `value`: The JavaScript Date object corresponding to the provided date string.
+ * - `date`: The original date string passed to the hook.
+ * - `css`: A string of CSS styles related to the journal dates.
+ * - `dates`: An array of available dates in the journal.
+ */
 const useJournal = (date: string) => {
   const [css, setCss] = useState<string>("");
 

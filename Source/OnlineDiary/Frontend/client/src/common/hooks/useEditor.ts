@@ -23,6 +23,31 @@ const lists: ListStyle[] = [
   { style: "unordered-list-item", icon: "properties" },
 ];
 
+/**
+ * Custom hook for managing the state and behavior of a text editor component.
+ * 
+ * This hook handles various editor functionalities, including state management for
+ * editor content, title, word count, and save/delete actions. It also provides utility 
+ * functions to handle editor state updates, focus events, and other editor-specific tasks.
+ * 
+ * @param {string} date - The date associated with the journal entry, used to load/save content.
+ * 
+ * @returns {Object} - An object containing:
+ * - `focusEditor`: Function to focus the editor.
+ * - `editor`: Ref object pointing to the editor state.
+ * - `editorState`: The current state of the editor.
+ * - `onChange`: Function to handle changes in the editor state.
+ * - `mouseDownHandler`: Function to toggle inline and block styles.
+ * - `styles`: Array of inline styles (BOLD, ITALIC, UNDERLINE).
+ * - `lists`: Array of list styles for ordered and unordered lists.
+ * - `wordCount`: The current word count in the editor.
+ * - `titleRef`: Ref object for the title input field.
+ * - `titleKeyDownHandler`: Function to handle key down events in the title field.
+ * - `titleKeyUpHandler`: Function to handle key up events in the title field.
+ * - `saved`: Boolean indicating if the journal entry is saved.
+ * - `isPublic`: Boolean indicating if the journal entry is public.
+ * - `toggleIsPublic`: Function to toggle the public state of the journal entry.
+ */
 const useEditor = (date: string) => {
   const [isPublic, setIsPublic] = useState<boolean>(false);
   const toggleIsPublic = () => {

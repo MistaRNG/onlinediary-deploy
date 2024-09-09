@@ -40,6 +40,13 @@ export const updateAlarm = (): UpdateAlarmAction => {
   };
 };
 
+/**
+ * Reducer that manages the safety state, including locked status and alarm time.
+ * 
+ * @param {SafetyState} state - The current safety state.
+ * @param {SafetyActions} action - The dispatched action.
+ * @returns {SafetyState} The updated safety state.
+ */
 const reducer = (state: SafetyState = initState, action: SafetyActions): SafetyState => {
   switch (action.type) {
     case LOCK:

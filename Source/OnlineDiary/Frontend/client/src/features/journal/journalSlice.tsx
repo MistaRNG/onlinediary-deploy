@@ -52,6 +52,10 @@ export const clearStatus = { type: REMOVE_SAVED } as const;
 
 type AppThunk = ThunkAction<void, RootState, unknown, AnyAction>;
 
+/**
+ * Fetches public journals from the API and dispatches them to the state.
+ * @returns {AppThunk} A thunk action that fetches public journals.
+ */
 export const getPublicJournals = (): AppThunk => {
   return async (dispatch) => {
     try {
@@ -63,6 +67,15 @@ export const getPublicJournals = (): AppThunk => {
   };
 };
 
+/**
+ * Saves a journal entry to the API and updates the state accordingly.
+ * 
+ * @param {any} content - The content of the journal.
+ * @param {string} date - The date of the journal entry.
+ * @param {string} title - The title of the journal.
+ * @param {boolean} isPublic - Whether the journal is public.
+ * @returns {AppThunk} A thunk action that saves a journal.
+ */
 export const saveJournal = (
   content: any,
   date: string,
@@ -90,6 +103,11 @@ export const saveJournal = (
   };
 };
 
+/**
+ * Fetches all journals for the current user from the API and dispatches them to the state.
+ * 
+ * @returns {AppThunk} A thunk action that fetches user journals.
+ */
 export const getJournals = (): AppThunk => {
   return async (dispatch) => {
     try {
@@ -103,6 +121,12 @@ export const getJournals = (): AppThunk => {
   };
 };
 
+/**
+ * Deletes a journal entry based on the provided date and updates the state.
+ * 
+ * @param {string} date - The date of the journal to be deleted.
+ * @returns {AppThunk} A thunk action that deletes a journal.
+ */
 export const deleteJournal = (date: string): AppThunk => {
   return async (dispatch, getState) => {
     try {
@@ -125,6 +149,13 @@ export const deleteJournal = (date: string): AppThunk => {
   };
 };
 
+/**
+ * The reducer function that manages the state changes for journals based on the action types.
+ * 
+ * @param {JournalState} state - The current state of the journal.
+ * @param {AnyAction} action - The dispatched action.
+ * @returns {JournalState} The updated state based on the action type.
+ */
 const reducer = (state = initState, action: AnyAction): JournalState => {
   const { data: prevData, editCount } = state;
   switch (action.type) {
