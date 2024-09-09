@@ -4,15 +4,16 @@ A full-stack journaling web application utilizing microservices architecture wit
 
 ## Table of Contents
 
-* <<overview>>
-* <<getting-started>>
-* <<dependencies>>
-* <<environment-setup>>
-* <<starting-the-application>>
-* <<using-the-application>>
-* <<accessing-api-documentation>>
-* <<running-tests>>
-* <<dependencies>>
+* link:#overview[Overview]
+* link:#getting-started[_Getting Started_]
+* link:#environment-setup[*Environment Setup*]
+* link:#starting-the-application[Starting the Application]
+* link:#using-the-application[Using the Application]
+* link:#accessing-api-documentation[Accessing API Documentation]
+* link:#running-tests[Running Tests]
+* link:#dependencies[Dependencies]
+* link:#galery[Galery]
+
 
 
 ## Overview
@@ -168,38 +169,59 @@ Set SERVICE_NAME to one of the following: auth, comments, gateway, journals, lik
 
 ### Client
 
-- [React](https://reactjs.org/)
-- [Redux](https://redux.js.org/)
-- [Material-UI](https://mui.com/)
-- [Axios](https://axios-http.com/)
-- [Moment.js](https://momentjs.com/)
-- [Draft.js](https://draftjs.org/)
+* link:https://reactjs.org/[React]
+* link:https://redux.js.org/[Redux]
+* link:https://mui.com/[Material-UI]
+* link:https://axios-http.com/[Axios]
+* link:https://momentjs.com/[Moment.js]
+* link:https://draftjs.org/[Draft.js]
 
 ### Server
 
-- [Node.js](https://nodejs.org/)
-- [Express](https://expressjs.com/)
-- [PostgreSQL](https://www.postgresql.org/)
-- [bcrypt.js](https://github.com/dcodeIO/bcrypt.js)
-- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
-- [dotenv](https://github.com/motdotla/dotenv)
-- [Jest](https://jestjs.io/)
+* link:https://nodejs.org/[Node.js]
+* link:https://expressjs.com/[Express]
+* link:https://www.postgresql.org/[PostgreSQL]
+* link:https://github.com/dcodeIO/bcrypt.js[bcrypt.js]
+* link:https://github.com/auth0/node-jsonwebtoken[jsonwebtoken]
+* link:https://github.com/motdotla/dotenv[dotenv]
+* link:https://jestjs.io/[Jest]
 
 ## Galery
 
 .Dark-Editor
 image::Documentation/Pictures/1_Onlinediary.png[Dark-Editor, width=600, height=400, align=center]
 
-image::Documentation/Pictures/2_W_Onlinediary.png[White-Editor, width=600, height=400, align=center]
+{empty} +
 
+.Light-Editor
+image::Documentation/Pictures/2_W_Onlinediary.png[Light-Editor, width=600, height=400, align=center]
+
+{empty} +
+
+.Dark-Dashboard
 image::Documentation/Pictures/3_Dashboard.png[Dark-Dashboard, width=600, height=400, align=center]
 
-image::Documentation/Pictures/3_W_Dashboard.png[White-Dashboard, width=600, height=400, align=center]
+{empty} +
 
+.Light-Dashboard
+image::Documentation/Pictures/3_W_Dashboard.png[Light-Dashboard, width=600, height=400, align=center]
+
+{empty} +
+
+.Journal-Card
 image::Documentation/Pictures/4_Modal.png[Journal-Card, width=600, height=400, align=center]
 
+{empty} +
+
+.Login
 image::Documentation/Pictures/5_Login.png[Login, width=600, height=400, align=center]
 
+{empty} +
+
+.ablet-View
 image::Documentation/Pictures/6_Tablet.png[Tablet-View, width=600, height=400, align=center]
 
+{empty} +
+
+.Smartphone-View
 image::Documentation/Pictures/7_Smartphone.png[Smartphone-View, width=600, height=400, align=center]
