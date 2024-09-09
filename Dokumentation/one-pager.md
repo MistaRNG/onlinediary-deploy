@@ -1,6 +1,6 @@
 # Onlinediary
 
-![Onlinediary](./Onlinediary.png)
+![Onlinediary](./1_Onlinediary.png)
 
 ## Projektübersicht
 

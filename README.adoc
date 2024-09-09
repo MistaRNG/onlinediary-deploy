@@ -55,6 +55,8 @@ Each microservice may also have its specific `.env` file with relevant environme
    ./start-all.sh
    ```
 
+*Note: Make sure you have Docker running and are logged in to docker. If permission denied appears, try* ```sudo ./start-all.sh"```
+
 2. **Access the Application**:
 
    - **Frontend**: [http://localhost:3000](http://localhost:3000)
@@ -79,7 +81,7 @@ Once the application is running, you can access it via the frontend at [http://l
 
 - **Authentication**: You can log in securely using OAuth with GitLab, which is the preferred method for accessing the application. *(Logging in without GitLab is for emergency or testing purposes only. GitLab is more secure due to OAuth2.)*
 
-- **Journaling**: Start writing your journal entries with various formatting options, such as bold, italic, and lists. Your changes are saved automatically after a few seconds of inactivity. You can make your entry public via a switch so that other users can see it, like it and comment on it. It will not be visible to others who made the entry. The "Entries from others" button takes you to a dashboard where you can see all public entries.
+- **Journaling**: Start writing your journal entries with various formatting options, such as bold, italic, and lists. Your changes are saved automatically after a few seconds of inactivity. You can see whether your entry has been saved when ...saving has changed to saved in the middle at the bottom of the editor. You can make your entry public via a switch so that other users can see it, like it and comment on it. It will not be visible to others who made the entry. The "Entries from others" button takes you to a dashboard where you can see all public entries.
 
 - **Search**: Use the search bar to find past entries quickly and efficiently.
 - **Comments and Likes**: Interact with journal entries by commenting and liking posts. Users can edit and delete their own comments directly within the comment section by clicking the link belew their comment. A prompt appears, allowing the user to modify the comment text. 
@@ -110,6 +112,8 @@ Enjoy journaling with Onlinediary!
 ## Accessing API Documentation
 
 For developers, the full API documentation can be accessed via SwaggerUI at [http://localhost:4000/api-docs](http://localhost:4000/api-docs). This interface provides a detailed overview of available endpoints, their parameters, and allows for testing directly in the browser.
+
+*Note: Most API requests require the user to be logged into the application, so make sure you are logged into another tab in the online diary with an active session if you want to test all Swagger UI features.*
 
 ## Running Tests
 
@@ -181,3 +185,13 @@ Set SERVICE_NAME to one of the following: auth, comments, gateway, journals, lik
 - [dotenv](https://github.com/motdotla/dotenv)
 - [Jest](https://jestjs.io/)
 
+## Galery
+
+![Dark-Editor](./1_Onlinediary.png)
+![White-Editor](./1_W_Onlinediary.png)
+![Dark-Dashboard](./3_Dashboard.png)
+![White-Dashboard](./3_W_Dashboard.png)
+![Journal-Card](./4_Modal.png)
+![Login](./5_Login.png)
+![Tablet-View](./6_Tablet.png)
+![Smartphone-View](./7_Smartphone.png)
