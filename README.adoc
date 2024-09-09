@@ -4,15 +4,15 @@ A full-stack journaling web application utilizing microservices architecture wit
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Getting Started](#getting-started)
-- [Dependencies](#dependencies)
-- [Environment Setup](#environment-setup)
-- [Starting the Application](#starting-the-application)
-- [Using the Application](#using-the-application)
-- [Accessing API Documentation](#accessing-api-documentation)
-- [Running Tests](#running-tests)
-- [Dependencies](#dependencies)
+* <<overview>>
+* <<getting-started>>
+* <<dependencies>>
+* <<environment-setup>>
+* <<starting-the-application>>
+* <<using-the-application>>
+* <<accessing-api-documentation>>
+* <<running-tests>>
+* <<dependencies>>
 
 
 ## Overview
@@ -25,7 +25,7 @@ Onlinediary is a microservices-based web application for journaling, featuring m
 
 2. **Install Docker and Docker Compose**: Ensure that Docker and Docker Compose are installed on your system. You can verify the installation with:
 
-   ```bash
+   ```
    docker --version
    docker-compose --version
    ```
@@ -51,7 +51,7 @@ Each microservice may also have its specific `.env` file with relevant environme
 
 1. **Run the start-all.sh Script**: Use the `start-all.sh` script to build and start the application. This script will handle the creation and startup of all Docker containers. *(The shell script is here: onlinediary/Source/OnlineDiary/start-all.sh)*
 
-   ```bash
+   ```
    ./start-all.sh
    ```
 
@@ -68,7 +68,7 @@ Each microservice may also have its specific `.env` file with relevant environme
 
    To stop and remove all running containers, you can use the following command:
 
-    ```bash
+   ```
    docker-compose down
    ```
 
@@ -186,6 +186,8 @@ Set SERVICE_NAME to one of the following: auth, comments, gateway, journals, lik
 - [Jest](https://jestjs.io/)
 
 ## Galery
+
+image::1_Onlinediary.png[Dark-Editor, width=600, height=400, align=center]
 
 ![Dark-Editor](./1_Onlinediary.png)
 ![White-Editor](./1_W_Onlinediary.png)
