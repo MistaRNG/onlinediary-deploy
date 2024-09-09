@@ -188,7 +188,7 @@ Set SERVICE_NAME to one of the following: auth, comments, gateway, journals, lik
 ## Galery
 
 .Dark-Editor
-image::Pictures/1_Onlinediary.png[Dark-Editor, width=600, height=400, align=center]
+image::Documentation/Pictures/1_Onlinediary.png[Dark-Editor, width=600, height=400, align=center]
 
 
 ![Dark-Editor](./1_Onlinediary.png)
