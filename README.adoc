@@ -32,7 +32,7 @@ image::Documentation/Pictures/1_W_B_Onlinediary.png[Light-Editor, width=90%, hei
    docker-compose --version
    
 
-   If not installed, refer to the link:https://docs.docker.com/get-docker/[Docker] and link:https://docs.docker.com/compose/install/[Docker-Compose] documentation for installation instructions.
+   If not installed, refer to the https://docs.docker.com/get-docker/ and https://docs.docker.com/compose/install/ documentation for installation instructions.
 
 3. **Environment Files**: Ensure that the required `.env` files are present in the root and service directories. These files must contain the correct configuration for database access, secret keys, and service ports.
 
