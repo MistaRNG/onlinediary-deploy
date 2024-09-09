@@ -70,4 +70,4 @@ Tagebucheinträgen zu erkennen.
 
 
 .Architektur Skizze
-image::Architektur_Skizze.png[Architektur_Skizze, align="center", width=100%]
+image::Pictures/Architektur_Skizze.png[Architektur_Skizze, align="center", width=100%]
