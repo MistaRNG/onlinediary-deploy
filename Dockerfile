@@ -10,7 +10,7 @@ RUN cd server/webservices/auth-service && npm install && \
     cd ../likes-service && npm install && \
     cd ../mode-service && npm install && \
     cd ../users-service && npm install && \
-    cd ../../../gateway-service && npm install && \
+    cd ../gateway-service && npm install && \
     cd ../../../client && npm install && npm run build
 
 RUN chmod +x /app/start-all.sh
