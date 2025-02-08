@@ -1,8 +1,6 @@
 #!/bin/bash
 
-services=("auth-service" "comments-service" "journals-service" "likes-service" "mode-service" "users-service" "gateway-service")
-
-for service in "${services[@]}"; do
+for service in auth-service comments-service journals-service likes-service mode-service users-service gateway-service; do
     service_path="/app/server/webservices/$service"
     if [ -f "$service_path/dist/index.js" ]; then
         echo "Starte $service..."
