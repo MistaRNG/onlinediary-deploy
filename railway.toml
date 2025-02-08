@@ -1,0 +1,6 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "./Dockerfile"
+
+[deploy]
+startCommand = "sh /app/start-all.sh"
