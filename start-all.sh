@@ -1,9 +1,15 @@
 #!/bin/bash
 
-cd /app/server/webservices/auth-service && npm start &
-cd /app/server/webservices/comments-service && npm start &
-cd /app/server/webservices/journals-service && npm start &
-cd /app/server/webservices/likes-service && npm start &
-cd /app/server/webservices/mode-service && npm start &
-cd /app/server/webservices/users-service && npm start &
-cd /app/server/webservices/gateway-service && npm start
+services=("auth-service" "comments-service" "journals-service" "likes-service" "mode-service" "users-service" "gateway-service")
+
+for service in "${services[@]}"; do
+    service_path="/app/server/webservices/$service"
+    if [ -f "$service_path/dist/index.js" ]; then
+        echo "Starte $service..."
+        cd "$service_path" && npm start &
+    else
+        echo "$service: dist/index.js nicht gefunden!"
+    fi
+done
+
+wait
