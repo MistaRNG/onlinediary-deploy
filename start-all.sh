@@ -12,4 +12,12 @@ for service in "${services[@]}"; do
     fi
 done
 
+frontend_path="/app/client/build"
+if [ -d "$frontend_path" ]; then
+    echo "Starte Frontend auf Port 3000..."
+    cd /app/client && npx serve -s build -l 3000 &
+else
+    echo "Frontend-Build nicht gefunden! Bitte sicherstellen, dass das Frontend gebaut wurde."
+fi
+
 wait
