@@ -18,4 +18,4 @@ RUN chmod +x /app/start-all.sh
 
 WORKDIR /app/server/webservices/gateway-service
 
-CMD ["/bin/bash", "/app/start-all.sh"]
+CMD ["bash", "/app/start-all.sh"]
