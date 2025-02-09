@@ -36,7 +36,7 @@ const LogIn: React.FC = () => {
 
   const handleGitLabLogin = () => {
     window.open(
-      "http://localhost:3001/api/auth/gitlab",
+      "https://onlinediary-deploy-production.up.railway.app/api/auth/gitlab",
       "_blank",
       "width=600,height=800"
     );

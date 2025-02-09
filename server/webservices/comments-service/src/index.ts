@@ -29,17 +29,18 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false,
+      secure: process.env.NODE_ENV === 'production',
       httpOnly: true,
       sameSite: 'lax',
-      domain: 'localhost',
+      domain: process.env.COOKIE_DOMAIN || 'localhost',
+      path: '/',
     },
   })
 );
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
     credentials: true,
   })
 );
