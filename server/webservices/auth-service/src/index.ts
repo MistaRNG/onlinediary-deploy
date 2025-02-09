@@ -32,7 +32,7 @@ const PORT = process.env.AUTH_SERVICE_PORT || 3001;
 const JWT_SECRET = process.env.JWT_SECRET || 'default_secret';
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.REACT_APP_API_URL || 'http://localhost:3000',
   credentials: true,
 }));
 
@@ -55,7 +55,7 @@ app.use(
       secure: false,
       httpOnly: true,
       sameSite: 'lax',
-      domain: 'localhost',
+      domain: process.env.COOKIE_DOMAIN || 'localhost',
       path: '/',
     },
   })
@@ -66,7 +66,7 @@ passport.use(
     {
       clientID: process.env.GITLAB_CLIENT_ID || '',
       clientSecret: process.env.GITLAB_CLIENT_SECRET || '',
-      callbackURL: 'http://localhost:3001/api/auth/gitlab/callback',
+      callbackURL: process.env.AUTH_SERVICE_CALLBACK_URL || 'http://localhost:3001/api/auth/gitlab/callback',
       baseURL: 'https://git.imn.htwk-leipzig.de',
     },
     (accessToken, refreshToken, profile, done) => {
