@@ -21,7 +21,7 @@ export const toggleMode = (): AppThunk => {
   return async (dispatch, getState) => {
     try {
       const { mode: darkMode } = getState();
-      const { data } = await axios.post("http://localhost:3006/api/mode", { darkMode });
+      const { data } = await axios.post("https://onlinediary-deploy-production.up.railway.app:3006/api/mode", { darkMode });
       if (data !== darkMode) dispatch({ type: TOGGLE_MODE });
     } catch (e: any) {
       const errorMessage = e.response?.data?.error || "An error occurred while toggling the mode.";
