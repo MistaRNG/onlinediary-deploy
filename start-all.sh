@@ -1,7 +1,8 @@
 for service in auth-service comments-service journals-service likes-service mode-service users-service gateway-service; do
     service_path="/app/server/webservices/$service"
-    port_var=$(echo "${service^^}_PORT")
-    service_port=${!port_var}
+    port_var="${service^^}_PORT"
+    service_port=$(eval echo "\$$port_var")
+    
     if [ -f "$service_path/dist/index.js" ]; then
         echo "Starte $service auf Port $service_port..."
         cd "$service_path" && PORT=$service_port npm start &
